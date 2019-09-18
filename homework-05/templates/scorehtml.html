@@ -1,0 +1,29 @@
+$def with(users,alluped)
+<table >
+<tr>
+<td></td>
+<td><b>Result</b></td>
+$for j in users:
+	<td><b> $j[0] </b></td>
+</tr>
+<tr>
+<td>Score</td>
+<td></td>
+$for j in users:
+	<td>$j[1]</td>
+</tr>
+$for i in alluped[-1:]:
+        <tr>
+                <td>Round:$i['turn']</td>
+        <td> $i['result']</td>
+        $for j in users:
+                $if i['winner']==j[0]:
+                        <td><b>$i[j[0]]['num']</b></td>
+                $else:
+                        $if i.get(j[0])!=None:
+                                <td> $i[j[0]]['num']</td>
+                        $else:
+                                <td></td>
+        </tr>
+</table>
+

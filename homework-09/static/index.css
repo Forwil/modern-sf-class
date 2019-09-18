@@ -1,0 +1,24 @@
+	td
+	{
+  		border:2px dotted black;
+		width:30px;
+		height:30px;
+		background-color: white;
+	}
+	body 
+	{
+		background-color: #EEEEEE;
+		font-family: Arial;
+		font-size: 12pt;
+		margin: 3% 10% 5% 10%;
+		padding: 4% 5% 0% 5%;
+		width: 70%;
+		border: 1px solid #000000;
+		line-height: 100%;
+	}
+	.t
+	{
+		width: 40px;
+	}
+
+

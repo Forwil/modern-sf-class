@@ -1,0 +1,1092 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0029)http://www.cnblogs.com/forwil -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Forwil - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Forwil - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Forwil - 博客园_files/style.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/Forwil/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/Forwil/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/Forwil/wlwmanifest.xml">
+<script type="text/javascript" async="" src="./Forwil - 博客园_files/ga.js"></script><script src="./Forwil - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'Forwil';</script>
+<script src="./Forwil - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/Forwil/">Forwil</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/Forwil/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/Forwil">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/Forwil/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/Forwil/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-5&nbsp;
+文章-0&nbsp;
+评论-3&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+<!--done-->
+
+		
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_DayItem_0_ImageLink_0" href="http://www.cnblogs.com/Forwil/archive/2013/11/03.html">2013年11月3日</a>				  
+	</div>
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_DayItem_0_DayList_0_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/Forwil/p/3404549.html">homework-05</a>
+			</div>
+			<div class="postCon"><h1 style="text-align: center;">接口声明</h1>
+<h2>/reg</h2>
+<pre><code>GET:
+
+    输出一个注册表单,其中
+
+    id:用户名
+
+    pd:密码
+
+POST:
+
+    接收一个表单{id="",pd=""}，返回：
+
+    0:注册成功
+
+    -1:注册失败</code></pre>
+<h2>/attend</h2>
+<pre><code>GET:
+
+    输出一个游戏参与表单，其中
+
+    id:用户名
+
+    pd:密码
+
+    num:1-100之间的实数，表示所要提交的数字
+
+POST:
+
+    接受一个表单(id="",pd="",num="")，返回:
+
+    -1:用户名不存在
+
+    -2:密码错误
+
+    -3:数字范围出错(必须在1-100之间)
+
+    -4:游戏结束 <br>　　
+
+    left_time+","+now_turn+","+success?:
+
+        left_time:表示下一轮多少秒后开始
+
+        now_turn:当前轮数
+
+        success?:1表示提交成功，0表示提交失败(服务器锁中，正在计算)</code></pre>
+<h2>/result</h2>
+<pre><code>GET:
+
+    返回n行，倒序的golden_number</code></pre>
+<h2>/</h2>
+<pre><code>GET:
+
+    返回综合信息榜<br><br></code></pre>
+<h1 style="text-align: center;">游戏流程和设计简述</h1>
+<p>游戏一开始（第0轮）有20s的注册时间，这段时间内必须注册好用户，注册的用户提交{用户名,密码}到/reg，服务器返回0表示提交成功，返回-1表示用户名重复了。这保证了一个用户名只能存在一个。</p>
+<p>每次用户往/attend提交自己的 {用户名、密码、数}时，服务器返回三个信息：下一轮比赛开始时间time，当前提交的轮数turn，当前提交是否成功succ。通过后两个信息可以得知自己的提交结果。而time预示了下一轮比赛的开始时间，客户端可以sleep(time)再继续提交，所以说这样客户端很容易实现自动游戏。</p>
+<p>这就意味着，客户端和服务端之间不“等待”，服务端不等待所有用户提交后才进行游戏。所以游戏时间是均匀的（我设定为1.2s一次），为了保证能计算出游戏结果，在游戏的最后0.2s里不允许用户再进行提交了。</p>
+<p>为了让客户端程序能得到更多可供AI调用的信息，我们在/result里返回了历史的Golden number，来让客户端“学习”golden number分布的模式。</p>
+<p>程序主体采用Python编写，http请求处理使用webpy框架实现，主要对每个url实现了GET/POST相应。</p>
+<p>在综合信息榜(/)上，为了实现更好的信息展示效果，我们用了canvas元素来绘制折线图，加上Ajax通信手段，来实现异步刷新golden number 变化曲线。</p>
+<p>主程序分两类线程，一类线程用来处理http请求，这方面的线程调度由webpy自动处理。另一个线程是游戏结果处理线程。两类线程之间通过全局变量来通信。</p>
+<p>Peer用ruby写了个随机提交数字的程序，测试时使用1.2s进行一次游戏，一共40个客户端，能在规定时间内跑完100轮游戏，并输出结果。</p>
+<h1 style="text-align: center;">回答问题</h1>
+<ol>
+<li><span style="font-size: medium;">你对于这个系统的服务器和接口是如何设计的?&nbsp; 应该采取哪些设计让游戏能顺利完成? 写出具体的接口。</span></li>
+</ol>
+<p><span style="font-size: medium;">　　　接口上边已经说了。</span></p>
+<ol>
+<li><span style="font-size: medium;">你和你的同伴分工负责, 设计出服务器应该有几个功能模块,&nbsp; 这些功能模块之间的关系 (用 UML 或其它图例来表示)。</span></li>
+</ol>
+<p><span style="font-size: medium;">　　　功能模块主要分http请求处理线程和游戏处理线程。 模块之间通过全局变量来通信。uml不会。</span></p>
+<ol>
+<li><span style="font-size: medium;">写出每个模块功能的伪代码，要能做到让另一个同学能看到这些伪代码，就能明确实现的要求并马上开始实现。</span></li>
+</ol>
+<p><span style="font-size: medium;">　　 &nbsp; &nbsp;？？</span></p>
+<ol>
+<li><span style="font-size: medium;">我们的课程有 60 名学生 (60 个客户程序)，如何能设计服务器程序和交互的接口让它能在 1 秒钟之内就完成一轮比赛? &nbsp;</span></li>
+</ol>
+<p><span style="font-size: medium;">　　　可以，只需要加个随机随机化让用户分散在0.5秒里均匀访问就行了。当然我们不能假设用户的行为，　　　但可以规定。</span></p>
+<h1>&nbsp;</h1>
+<h1 style="text-align: center;">主程序</h1>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;83b67a4c-8b2c-43e9-9d71-24990c3aa34c&#39;)"><img id="code_img_closed_83b67a4c-8b2c-43e9-9d71-24990c3aa34c" class="code_img_closed" src="./Forwil - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_83b67a4c-8b2c-43e9-9d71-24990c3aa34c" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;83b67a4c-8b2c-43e9-9d71-24990c3aa34c&#39;,event)" src="./Forwil - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_83b67a4c-8b2c-43e9-9d71-24990c3aa34c" class="cnblogs_code_hide">
+<pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> web
+</span><span style="color: #008080;">  2</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> string
+</span><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> time
+</span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> thread
+</span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">from</span> web <span style="color: #0000ff;">import</span><span style="color: #000000;"> form
+</span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> data
+</span><span style="color: #008080;">  7</span> 
+<span style="color: #008080;">  8</span> urls =<span style="color: #000000;"> (
+</span><span style="color: #008080;">  9</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/reg</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">reg</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 10</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/attend</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">attend</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 11</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">board</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 12</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/result</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">result</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 13</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/resulthtml</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">resulthtml</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 14</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/scorehtml</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">scorehtml</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 15</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/infohtml</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">infohtml</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 16</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/turnhtml</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">turnhtml</span><span style="color: #800000;">'</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 17</span>     <span style="color: #800000;">'</span><span style="color: #800000;">/totalboard</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">totalboard</span><span style="color: #800000;">'</span>
+<span style="color: #008080;"> 18</span> <span style="color: #000000;">)
+</span><span style="color: #008080;"> 19</span> 
+<span style="color: #008080;"> 20</span> render = web.template.render(<span style="color: #800000;">'</span><span style="color: #800000;">templates/</span><span style="color: #800000;">'</span><span style="color: #000000;">)
+</span><span style="color: #008080;"> 21</span> app =<span style="color: #000000;"> web.application(urls, globals())
+</span><span style="color: #008080;"> 22</span> 
+<span style="color: #008080;"> 23</span> regform =<span style="color: #000000;"> form.Form(
+</span><span style="color: #008080;"> 24</span>     form.Textbox(<span style="color: #800000;">"</span><span style="color: #800000;">id</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 25</span> <span style="color: #000000;">        form.notnull),
+</span><span style="color: #008080;"> 26</span>     form.Password(<span style="color: #800000;">"</span><span style="color: #800000;">pd</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 27</span> <span style="color: #000000;">        form.notnull)
+</span><span style="color: #008080;"> 28</span> <span style="color: #000000;">)
+</span><span style="color: #008080;"> 29</span> 
+<span style="color: #008080;"> 30</span> attendform =<span style="color: #000000;"> form.Form(
+</span><span style="color: #008080;"> 31</span>     form.Textbox(<span style="color: #800000;">"</span><span style="color: #800000;">id</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 32</span> <span style="color: #000000;">        form.notnull),
+</span><span style="color: #008080;"> 33</span>     form.Password(<span style="color: #800000;">"</span><span style="color: #800000;">pd</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 34</span> <span style="color: #000000;">        form.notnull),
+</span><span style="color: #008080;"> 35</span>     form.Textbox(<span style="color: #800000;">"</span><span style="color: #800000;">num</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #008080;"> 36</span>         form.regexp(<span style="color: #800000;">'</span><span style="color: #800000;">\d+</span><span style="color: #800000;">'</span>, <span style="color: #800000;">'</span><span style="color: #800000;">Must be a digit</span><span style="color: #800000;">'</span><span style="color: #000000;">)),    
+</span><span style="color: #008080;"> 37</span> <span style="color: #000000;">)
+</span><span style="color: #008080;"> 38</span> 
+<span style="color: #008080;"> 39</span> 
+<span style="color: #008080;"> 40</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> turnhtml:
+</span><span style="color: #008080;"> 41</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 42</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> data.nowturn
+</span><span style="color: #008080;"> 43</span> 
+<span style="color: #008080;"> 44</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> infohtml:
+</span><span style="color: #008080;"> 45</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 46</span>         <span style="color: #0000ff;">if</span> data.gameover==1<span style="color: #000000;">:
+</span><span style="color: #008080;"> 47</span>             <span style="color: #0000ff;">return</span> <span style="color: #800000;">"</span><span style="color: #800000;">&lt;b&gt;Game is over!&lt;/b&gt; the winner is  &lt;b&gt;</span><span style="color: #800000;">"</span> + data.winner + <span style="color: #800000;">"</span><span style="color: #800000;">&lt;/b&gt;  score is  &lt;b&gt;</span><span style="color: #800000;">"</span> + str(data.users[data.winner]) +<span style="color: #800000;">"</span><span style="color: #800000;">&lt;/b&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">else</span><span style="color: #000000;">:
+</span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">return</span> <span style="color: #800000;">"</span><span style="color: #800000;">LEFT </span><span style="color: #800000;">"</span>+ str(data.TURNTIME-(time.time()-data.nowstart)) + <span style="color: #800000;">"</span><span style="color: #800000;">s TO SUBMIT YOUR NUMBER</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 50</span> 
+<span style="color: #008080;"> 51</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> result:
+</span><span style="color: #008080;"> 52</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 53</span>         s = <span style="color: #800000;">""</span>
+<span style="color: #008080;"> 54</span>         <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span> range(len(data.alluped)-1,-1,-1<span style="color: #000000;">):
+</span><span style="color: #008080;"> 55</span>             s += str(data.alluped[i][<span style="color: #800000;">'</span><span style="color: #800000;">result</span><span style="color: #800000;">'</span>]) + <span style="color: #800000;">'</span><span style="color: #800000;">\n</span><span style="color: #800000;">'</span>
+<span style="color: #008080;"> 56</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> s
+</span><span style="color: #008080;"> 57</span> 
+<span style="color: #008080;"> 58</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> resulthtml:
+</span><span style="color: #008080;"> 59</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 60</span>         s = <span style="color: #800000;">"</span><span style="color: #800000;">&lt;table &gt;&lt;tr&gt;&lt;td&gt;Round:&lt;/td&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 61</span>         l =<span style="color: #000000;"> len(data.alluped)
+</span><span style="color: #008080;"> 62</span>         <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span> range(l-1,max(l-12,-1),-1<span style="color: #000000;">):
+</span><span style="color: #008080;"> 63</span>             s += <span style="color: #800000;">"</span><span style="color: #800000;">&lt;td&gt;</span><span style="color: #800000;">"</span>+str(i)+<span style="color: #800000;">"</span><span style="color: #800000;">&lt;/td&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 64</span>         s +=<span style="color: #800000;">"</span><span style="color: #800000;">&lt;/tr&gt;&lt;td&gt;&lt;/td&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span> range(l-1,max(l-12,-1),-1<span style="color: #000000;">):
+</span><span style="color: #008080;"> 66</span>             s += <span style="color: #800000;">"</span><span style="color: #800000;">&lt;td&gt;</span><span style="color: #800000;">"</span>+str(data.alluped[i][<span style="color: #800000;">'</span><span style="color: #800000;">result</span><span style="color: #800000;">'</span>])+<span style="color: #800000;">"</span><span style="color: #800000;">&lt;/td&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 67</span>         s += <span style="color: #800000;">"</span><span style="color: #800000;">&lt;/tr&gt;&lt;/table&gt;</span><span style="color: #800000;">"</span>
+<span style="color: #008080;"> 68</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> s
+</span><span style="color: #008080;"> 69</span> 
+<span style="color: #008080;"> 70</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> scorehtml:
+</span><span style="color: #008080;"> 71</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 72</span>         b = sorted(data.users.iteritems(),key=<span style="color: #0000ff;">lambda</span> a:a[1],reverse =<span style="color: #000000;"> True)
+</span><span style="color: #008080;"> 73</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.scorehtml(b,data.alluped)
+</span><span style="color: #008080;"> 74</span> 
+<span style="color: #008080;"> 75</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> totalboard:
+</span><span style="color: #008080;"> 76</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 77</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.totalboard(data.users,data.alluped)
+</span><span style="color: #008080;"> 78</span> 
+<span style="color: #008080;"> 79</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> reg:
+</span><span style="color: #008080;"> 80</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;"> 81</span>         form =<span style="color: #000000;"> regform()
+</span><span style="color: #008080;"> 82</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.reg(form)        
+</span><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> POST(self):
+</span><span style="color: #008080;"> 84</span>         form =<span style="color: #000000;"> regform()
+</span><span style="color: #008080;"> 85</span>         <span style="color: #0000ff;">if</span> <span style="color: #0000ff;">not</span><span style="color: #000000;"> form.validates():
+</span><span style="color: #008080;"> 86</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.reg(form)
+</span><span style="color: #008080;"> 87</span>         <span style="color: #0000ff;">else</span><span style="color: #000000;">:
+</span><span style="color: #008080;"> 88</span>             i =<span style="color: #000000;"> web.input()
+</span><span style="color: #008080;"> 89</span>             myvar = dict(id =<span style="color: #000000;"> i.id)
+</span><span style="color: #008080;"> 90</span>             result = list(data.db.select(<span style="color: #800000;">'</span><span style="color: #800000;">users</span><span style="color: #800000;">'</span>,myvar,where = <span style="color: #800000;">"</span><span style="color: #800000;">id = $id</span><span style="color: #800000;">"</span><span style="color: #000000;">))
+</span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">if</span> result==<span style="color: #000000;">[]:
+</span><span style="color: #008080;"> 92</span>                 data.db.insert(<span style="color: #800000;">'</span><span style="color: #800000;">users</span><span style="color: #800000;">'</span>,id = i.id,pd =<span style="color: #000000;"> i.pd)
+</span><span style="color: #008080;"> 93</span>                 data.users[i.id]=0.0    
+<span style="color: #008080;"> 94</span>                 <span style="color: #0000ff;">return</span><span style="color: #000000;"> 0
+</span><span style="color: #008080;"> 95</span>             <span style="color: #0000ff;">else</span><span style="color: #000000;">:
+</span><span style="color: #008080;"> 96</span>                 <span style="color: #0000ff;">return</span> -1
+<span style="color: #008080;"> 97</span> 
+<span style="color: #008080;"> 98</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> attend:
+</span><span style="color: #008080;"> 99</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;">100</span>         form =<span style="color: #000000;"> attendform()
+</span><span style="color: #008080;">101</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.attend(form)
+</span><span style="color: #008080;">102</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> POST(self):
+</span><span style="color: #008080;">103</span>         form =<span style="color: #000000;"> attendform()
+</span><span style="color: #008080;">104</span>         <span style="color: #0000ff;">if</span> <span style="color: #0000ff;">not</span><span style="color: #000000;"> form.validates():
+</span><span style="color: #008080;">105</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> render.attend(form)
+</span><span style="color: #008080;">106</span>         <span style="color: #0000ff;">else</span><span style="color: #000000;">:
+</span><span style="color: #008080;">107</span>             i =<span style="color: #000000;"> web.input()
+</span><span style="color: #008080;">108</span>             i.num =<span style="color: #000000;"> string.atof(i.num)
+</span><span style="color: #008080;">109</span>             result = list(data.db.select(<span style="color: #800000;">'</span><span style="color: #800000;">users</span><span style="color: #800000;">'</span>,where = <span style="color: #800000;">'</span><span style="color: #800000;">id = "%s"</span><span style="color: #800000;">'</span>%<span style="color: #000000;">(i.id)))
+</span><span style="color: #008080;">110</span>             <span style="color: #0000ff;">if</span> result==<span style="color: #000000;">[]:
+</span><span style="color: #008080;">111</span>                 <span style="color: #0000ff;">return</span> -1
+<span style="color: #008080;">112</span>             <span style="color: #0000ff;">if</span> result[0][<span style="color: #800000;">'</span><span style="color: #800000;">pd</span><span style="color: #800000;">'</span>]!=<span style="color: #000000;">i.pd:
+</span><span style="color: #008080;">113</span>                 <span style="color: #0000ff;">return</span> -2
+<span style="color: #008080;">114</span>             <span style="color: #0000ff;">if</span> 100&lt;i.num <span style="color: #0000ff;">or</span> i.num&lt;1<span style="color: #000000;">:
+</span><span style="color: #008080;">115</span>                 <span style="color: #0000ff;">return</span> -3
+<span style="color: #008080;">116</span>             <span style="color: #0000ff;">if</span> data.gameover == 1<span style="color: #000000;">:
+</span><span style="color: #008080;">117</span>                 <span style="color: #0000ff;">return</span> -4
+<span style="color: #008080;">118</span>             a =<span style="color: #000000;"> data.nowuped.get(i.id)
+</span><span style="color: #008080;">119</span>             t = data.TURNTIME-(time.time()-<span style="color: #000000;">data.nowstart)
+</span><span style="color: #008080;">120</span>             <span style="color: #0000ff;">if</span> a==None <span style="color: #0000ff;">and</span> t&gt;=<span style="color: #000000;">data.DEAD:
+</span><span style="color: #008080;">121</span>                 data.nown += 1
+<span style="color: #008080;">122</span>                 data.nowtot +=<span style="color: #000000;"> i.num
+</span><span style="color: #008080;">123</span>                 data.nowuped[i.id] = dict(num = i.num,deltscore =<span style="color: #000000;"> 0)
+</span><span style="color: #008080;">124</span>             <span style="color: #0000ff;">return</span> <span style="color: #800000;">"</span><span style="color: #800000;">%f,%d,%d</span><span style="color: #800000;">"</span>%(data.TURNTIME-(time.time()-data.nowstart),data.nowturn,a==None <span style="color: #0000ff;">and</span> t&gt;=<span style="color: #000000;">data.DEAD)
+</span><span style="color: #008080;">125</span> 
+<span style="color: #008080;">126</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> board:
+</span><span style="color: #008080;">127</span>     <span style="color: #0000ff;">def</span><span style="color: #000000;"> GET(self):
+</span><span style="color: #008080;">128</span>         t = data.TURNTIME-(time.time()-<span style="color: #000000;">data.nowstart)
+</span><span style="color: #008080;">129</span>         a = render.board(data.DEAD,data.TURNTIME,t&gt;=<span style="color: #000000;">data.DEAD,data.nowturn,t,data.alluped,data.users,data.TURNTIME)
+</span><span style="color: #008080;">130</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> a
+</span><span style="color: #008080;">131</span> <span style="color: #0000ff;">def</span><span style="color: #000000;"> dealwinlost(uped,users,avgn,nowturn):
+</span><span style="color: #008080;">132</span>     minv = 101
+<span style="color: #008080;">133</span>     maxv =<span style="color: #000000;"> 0
+</span><span style="color: #008080;">134</span>     winner =<span style="color: #000000;"> 0
+</span><span style="color: #008080;">135</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> uped:
+</span><span style="color: #008080;">136</span>         delt = abs(uped[i][<span style="color: #800000;">'</span><span style="color: #800000;">num</span><span style="color: #800000;">'</span>]-<span style="color: #000000;">avgn)
+</span><span style="color: #008080;">137</span>         <span style="color: #0000ff;">if</span> delt&gt;<span style="color: #000000;">maxv:
+</span><span style="color: #008080;">138</span>             maxv =<span style="color: #000000;"> delt
+</span><span style="color: #008080;">139</span>         <span style="color: #0000ff;">if</span> delt&lt;<span style="color: #000000;">minv:
+</span><span style="color: #008080;">140</span>             minv =<span style="color: #000000;"> delt
+</span><span style="color: #008080;">141</span>             winner =<span style="color: #000000;"> i
+</span><span style="color: #008080;">142</span>     uped[winner][<span style="color: #800000;">'</span><span style="color: #800000;">deltscore</span><span style="color: #800000;">'</span>] = 10
+<span style="color: #008080;">143</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> uped:
+</span><span style="color: #008080;">144</span>         <span style="color: #0000ff;">if</span> i==<span style="color: #000000;">winner:
+</span><span style="color: #008080;">145</span>             <span style="color: #0000ff;">continue</span>
+<span style="color: #008080;">146</span>         delt = abs(uped[i][<span style="color: #800000;">'</span><span style="color: #800000;">num</span><span style="color: #800000;">'</span>]-<span style="color: #000000;">avgn)
+</span><span style="color: #008080;">147</span>         <span style="color: #0000ff;">if</span> delt==<span style="color: #000000;">maxv:
+</span><span style="color: #008080;">148</span>             uped[i][<span style="color: #800000;">'</span><span style="color: #800000;">deltscore</span><span style="color: #800000;">'</span>] = -1
+<span style="color: #008080;">149</span>     a = list(data.db.select(<span style="color: #800000;">'</span><span style="color: #800000;">users</span><span style="color: #800000;">'</span><span style="color: #000000;">))
+</span><span style="color: #008080;">150</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> a:
+</span><span style="color: #008080;">151</span>         <span style="color: #0000ff;">if</span> i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>] <span style="color: #0000ff;">not</span> <span style="color: #0000ff;">in</span> uped <span style="color: #0000ff;">and</span> i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>]!=<span style="color: #000000;">winner:
+</span><span style="color: #008080;">152</span>             uped[i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>]] = dict(num = 0.0,deltscore = -5<span style="color: #000000;">)
+</span><span style="color: #008080;">153</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> a:
+</span><span style="color: #008080;">154</span>         users[i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>]] += uped[i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>]][<span style="color: #800000;">'</span><span style="color: #800000;">deltscore</span><span style="color: #800000;">'</span><span style="color: #000000;">]
+</span><span style="color: #008080;">155</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> winner
+</span><span style="color: #008080;">156</span> 
+<span style="color: #008080;">157</span> <span style="color: #0000ff;">def</span><span style="color: #000000;"> gameinit():
+</span><span style="color: #008080;">158</span>     a = list(data.db.select(<span style="color: #800000;">'</span><span style="color: #800000;">users</span><span style="color: #800000;">'</span><span style="color: #000000;">))
+</span><span style="color: #008080;">159</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> a:
+</span><span style="color: #008080;">160</span>         data.users[i[<span style="color: #800000;">'</span><span style="color: #800000;">id</span><span style="color: #800000;">'</span>]]=0.0    
+<span style="color: #008080;">161</span> 
+<span style="color: #008080;">162</span> <span style="color: #0000ff;">def</span><span style="color: #000000;"> roundinit():
+</span><span style="color: #008080;">163</span>     data.nowuped =<span style="color: #000000;"> {}
+</span><span style="color: #008080;">164</span>     data.nown =<span style="color: #000000;"> 0
+</span><span style="color: #008080;">165</span>     data.nowtot =<span style="color: #000000;"> 0
+</span><span style="color: #008080;">166</span> 
+<span style="color: #008080;">167</span> <span style="color: #0000ff;">def</span><span style="color: #000000;"> round():
+</span><span style="color: #008080;">168</span>     data.nowstart =<span style="color: #000000;"> time.time()
+</span><span style="color: #008080;">169</span>     time.sleep(data.TURNTIME-<span style="color: #000000;">data.DEAD)
+</span><span style="color: #008080;">170</span>     <span style="color: #0000ff;">if</span> (data.nown!=<span style="color: #000000;">0):
+</span><span style="color: #008080;">171</span>         avgn = data.nowtot/data.nown * 0.618
+<span style="color: #008080;">172</span>         data.nowuped[<span style="color: #800000;">'</span><span style="color: #800000;">winner</span><span style="color: #800000;">'</span>] =<span style="color: #000000;"> dealwinlost(data.nowuped,data.users,avgn,data.nowturn)
+</span><span style="color: #008080;">173</span>         data.nowuped[<span style="color: #800000;">'</span><span style="color: #800000;">result</span><span style="color: #800000;">'</span>] =<span style="color: #000000;"> avgn
+</span><span style="color: #008080;">174</span>         data.nowuped[<span style="color: #800000;">'</span><span style="color: #800000;">turn</span><span style="color: #800000;">'</span>] =<span style="color: #000000;"> data.nowturn
+</span><span style="color: #008080;">175</span> <span style="color: #000000;">        data.alluped.append(data.nowuped)
+</span><span style="color: #008080;">176</span>         data.nowturn += 1
+<span style="color: #008080;">177</span>         <span style="color: #0000ff;">if</span> data.nowturn &gt;=<span style="color: #000000;"> data.MAXTURN:
+</span><span style="color: #008080;">178</span>             data.gameover = 1
+<span style="color: #008080;">179</span>         t =data.TURNTIME-(time.time()-<span style="color: #000000;">data.nowstart)
+</span><span style="color: #008080;">180</span>         <span style="color: #0000ff;">if</span> t&gt;<span style="color: #000000;">0:
+</span><span style="color: #008080;">181</span> <span style="color: #000000;">            time.sleep(t)
+</span><span style="color: #008080;">182</span> 
+<span style="color: #008080;">183</span> <span style="color: #0000ff;">def</span><span style="color: #000000;"> game():
+</span><span style="color: #008080;">184</span> <span style="color: #000000;">    gameinit()
+</span><span style="color: #008080;">185</span>     temp =<span style="color: #000000;"> data.TURNTIME
+</span><span style="color: #008080;">186</span>     data.TURNTIME = 20
+<span style="color: #008080;">187</span> <span style="color: #000000;">    round()
+</span><span style="color: #008080;">188</span>     data.TURNTIME =<span style="color: #000000;"> temp
+</span><span style="color: #008080;">189</span>     <span style="color: #0000ff;">while</span><span style="color: #000000;"> True:
+</span><span style="color: #008080;">190</span> <span style="color: #000000;">        roundinit()
+</span><span style="color: #008080;">191</span> <span style="color: #000000;">        round()
+</span><span style="color: #008080;">192</span>         <span style="color: #0000ff;">if</span> data.gameover ==1<span style="color: #000000;">:
+</span><span style="color: #008080;">193</span>             <span style="color: #0000ff;">break</span>
+<span style="color: #008080;">194</span>     maxscore = -100000
+<span style="color: #008080;">195</span>     <span style="color: #0000ff;">for</span> i <span style="color: #0000ff;">in</span><span style="color: #000000;"> data.users:
+</span><span style="color: #008080;">196</span>         <span style="color: #0000ff;">if</span> data.users[i]&gt;<span style="color: #000000;">maxscore:
+</span><span style="color: #008080;">197</span>             maxscore =<span style="color: #000000;"> data.users[i]
+</span><span style="color: #008080;">198</span>             data.winner =<span style="color: #000000;"> i
+</span><span style="color: #008080;">199</span> <span style="color: #000000;">    thread.exit_thread() 
+</span><span style="color: #008080;">200</span> 
+<span style="color: #008080;">201</span> <span style="color: #0000ff;">if</span> <span style="color: #800080;">__name__</span> == <span style="color: #800000;">"</span><span style="color: #800000;">__main__</span><span style="color: #800000;">"</span><span style="color: #000000;">:
+</span><span style="color: #008080;">202</span> <span style="color: #000000;">    thread.start_new_thread(game,())
+</span><span style="color: #008080;">203</span>     app.run()</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code </span></div>
+<p>&nbsp;</p>
+<h1 style="text-align: center;">演示效果</h1>
+<p><img src="./Forwil - 博客园_files/04140325-0076cc3649dd418584154340553561a7.png" alt=""></p></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2013-11-03 01:01 Forwil 阅读(11) 评论(0)  <a href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?postid=3404549" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+	
+		
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_DayItem_1_ImageLink_1" href="http://www.cnblogs.com/Forwil/archive/2013/10/27.html">2013年10月27日</a>				  
+	</div>
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_DayItem_1_DayList_1_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/Forwil/p/3391383.html">homework-04</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 编码规范这次两个程序都是用c写的，我比较习惯的风格是main函数在最后，其他函数在前面，而zjoe习惯的编程风格是main函数在第一位，然后前面声明一堆变量。他阅读过一些工业级c的代码，据说很多用c写的库都用这样的风格。我们两个人编写c语言都比较规范，重视代码的重用性。当某一个功能重复次数打到3次以上的话，那么就比较有必要为之写一个函数。而模块化到底是不是都是好的呢？我觉得这是运行效率和代码可重用性的trade off，追求效率的代码会用很多小技巧来加速程序的运行，而其可重用行可扩展性就变低了。不过在现在这种程序员时间比机器时间还宝贵的时代，显然编写可重用的代码是要有益得多的。时间记录预计时间<a href="http://www.cnblogs.com/Forwil/p/3391383.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2013-10-27 22:58 Forwil 阅读(19) 评论(0)  <a href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?postid=3391383" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+	
+		
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_DayItem_2_ImageLink_2" href="http://www.cnblogs.com/Forwil/archive/2013/10/21.html">2013年10月21日</a>				  
+	</div>
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_DayItem_2_DayList_2_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/Forwil/p/3379829.html">homework-03</a>
+			</div>
+			<div class="postCon"><p>以下分割线内摘自zjoe</p>
+<p>----------------------------------------------------------</p>
+<h1>基本思路</h1>
+<p>这个问题本身很容易，但无奈老师的要求实在是奇怪。要从命令行 启动程序，并且多次运行后只保留一个程序在运行。已经都写UI了 为何还要用命令行控制？如果非要满足这个要求，还需要写很麻烦 的进程切换，所以我没有完全按照老师的要求写。我的想法是用UI 作为主控程序，直接在UI内实现参数的输入。输入后用户按下按钮 触发一个过程，在这个过程中实现如下功能：</p>
+<ol>
+<li>分离参数</li>
+<li>将参数传递给计算程序，执行计算</li>
+<li>获取计算结果</li>
+<li>新建tab并显示结果</li>
+</ol>
+<p>这样实现的话计算程序运行完后就退出了，所以系统中不会有两个 maxsum在运行。</p>
+<h2>实现</h2>
+<p>由于最近一直在linux下学习，所以决定采用gtk来实现。Gtk是用c 语言实现的图形化库，几乎是完全按面向对象的规范实现的。容器 的思想使得用起来非常方便高效。不得不说c语言真的很强大，面 向对象不是语言属性，而是思想属性。</p>
+<h2>细节</h2>
+<p>具体实现的时候其实是两个程序分开来了，原来的计算程序没动。UI 直接调用计算程序，输出的结果保存在一个文件中，UI再读入处理。 没有采用进程通信之类的，感觉实在没有必要。没有把程序写在一起 是因为太长了，而且因为要多次执行计算，计算程序中的一些变量初 始化容易出问题，索性直接调用程序。具体图形化的细节就不说了， 了解了gtk的一些规则后真没什么说的，写就行了。有些细节没有再 细致的处理，如组件大小之类的，这周作业略多，时间不太够，望谅 解。</p>
+<h2>运行效果</h2>
+<p><img src="./Forwil - 博客园_files/20213655-c643c4c0e6a74f0c8cd6474c291bfefa.png" alt=""></p>
+<p>------------------------------------------------------------------------------</p>
+<h1>回答问题</h1>
+<h2>你现在使用的代码规范是什么,&nbsp; 和上课前有什么改进?&nbsp;</h2>
+<p>答: 现在比较注意代码的模块化,并尽量让更多代码得到重用.代码要写得好其实很不容易,需要注意到实现效率和可扩展性.而面向对象可能是一种提高模块化和可扩展性的方法.</p>
+<h2>你的同伴有哪些优点 (列出至少三点)， 和那些需要改进的地方 (列出至少三点)</h2>
+<p>答:代码能力强,学习效率高,并且具有一定的沟通能力.需要改进的地方:坚持用c语言写图形化,坚持GTK(其实用python+Qt很方便的),太坚持自己的看法.</p>
+<h2>你的代码从 作业2 到 作业3 经历了哪些变化?&nbsp; 哪些代码需要重构 （看关于代码重构的资料）, 哪些需要重写,&nbsp; 为什么？</h2>
+<p>答:由于作业3只是在原来的基础上增加了一个图形化程序,所以原代码基本不用变化,两个代码之前的通讯是通过作业2运行结果输出的文件来的.在作业3中,主要程序是作业3中增加的图形化程序,而在图形化程序中去调用作业2的程序,基本不需要重构.</p>
+<h2>你的设计是如何保证 不同的 maxsum.exe 命令行最后在一个GUI 的界面显示的?&nbsp; (C++ 的设计模式中有<a href="http://www.bing.com/search?q=singleton%20%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f&FORM=BB07LB&PC=BB07&QS=n&mkt=zh-cn" target="_blank">singleton</a>&nbsp;的概念, 说明一个类的实例如何在一个进程中保持单例, 我们这里谈的是软件如何在操作系统中保持 singleton)</h2>
+<p>答:只需要保持图形化界面存在,运行一次命令之后增加一个tab就行了.由于对C++不熟所以这个问题不会回答..</p>
+<p>当然,&nbsp; 请继续记录时间的估计和你实际的用时:</p>
+<p>&nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1" style="width: 805px;">
+<tbody>
+<tr>
+<td height="46" valign="top" width="176" nowrap="nowrap">&nbsp;</td>
+<td height="46" valign="top" width="278" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">Personal Software Process Stages</span></span></p>
+</td>
+<td height="46" valign="top" width="69">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">时间百分比(%)</span></span></p>
+</td>
+<td height="46" valign="top" width="103" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">实际花费的时间 (分钟)</span></span></p>
+</td>
+<td height="46" valign="top" width="177" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">原来估计的时间 (分钟)</span></span></p>
+</td>
+</tr>
+<tr>
+<td height="20" valign="top" width="176" nowrap="nowrap">
+<p><strong><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">Planning</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="278" nowrap="nowrap">
+<p><strong><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span color="#000000" style="color: #000000;">计划</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="20" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estimate</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>估计这个任务需要多少时间，把工作细化并大致排序</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+</tr>
+<tr>
+<td height="20" valign="top" width="176" nowrap="nowrap">
+<p><strong><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">Development</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="278" nowrap="nowrap">
+<p><strong><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span color="#000000" style="color: #000000;">开发</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="20" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Analysis</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>需求分析 (包括学习新技术)</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;30</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;2*60</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;1*60</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design Spec</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>生成设计文档</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design Review</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;">设计复审</span><span face="Calibri" style="font-family: Calibri;">&nbsp;(</span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;">和同事审核设计文档</span></span><span face="Calibri" style="font-family: Calibri;"><span>)</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coding Standard</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" face="Microsoft YaHei" style="color: #000000; font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span color="#000000" face="Calibri" style="color: #000000; font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;">代码规范</span><span color="#000000" style="color: #000000;"><span face="Calibri" style="font-family: Calibri;">&nbsp;(</span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;">制定合适的规范</span></span></span><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">)</span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;5</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>具体设计</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;30</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;60</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coding</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>具体编码</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;30</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;4*60</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;3*60</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Code Review</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>代码复审</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<p><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Test</span></span></p>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap">
+<p><span color="#000000" style="color: #000000;"><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>·</span></span><span><span face="Calibri" style="font-family: Calibri;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span>测试（自我测试，修改代码，提交修改）</span></span></span></p>
+</td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;30</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;20</span></td>
+</tr>
+<tr>
+<td height="20" valign="top" width="176" nowrap="nowrap">
+<p><strong><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;">Reporting</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="278" nowrap="nowrap">
+<p><strong><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span color="#000000" style="color: #000000;">总结报告</span></span></strong></p>
+</td>
+<td height="20" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;5</span></td>
+<td height="20" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;10</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<ul>
+<li><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Test Report</span></span></span></li>
+<li><span face="Microsoft YaHei" style="font-family: &#39;Microsoft YaHei&#39;;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>测试报告</span></span></span></li>
+</ul>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap"></td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap">
+<p><span color="#000000" face="Calibri" style="color: #000000; font-family: Calibri;">&nbsp;0</span></p>
+</td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+</tr>
+<tr>
+<td height="22" valign="top" width="176" nowrap="nowrap">
+<ul>
+<li><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Size Measurement</span></span></span></li>
+<li><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>计算工作量</span></span></span></li>
+<li><span face="Calibri" style="font-family: Calibri;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Postmortem &amp; Improvement Plan</span></span></span></li>
+<li><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;"><span>·</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>事后总结</span><span>,&nbsp;</span><span>并提出改进</span></span></span></li>
+</ul>
+</td>
+<td height="22" valign="top" width="278" nowrap="nowrap"></td>
+<td height="22" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="22" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;0</span></td>
+</tr>
+<tr>
+<td height="61" valign="top" width="176"></td>
+<td height="61" valign="top" width="278" nowrap="nowrap"></td>
+<td height="61" valign="top" width="69" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="61" valign="top" width="103" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+<td height="46" valign="top" width="177" nowrap="nowrap"><span color="#000000" style="color: #000000;">&nbsp;</span></td>
+</tr>
+<tr>
+<td height="61" valign="top" width="176"><strong><span color="#000000" style="color: #000000;">Total</span></strong></td>
+<td height="61" valign="top" width="278" nowrap="nowrap"><strong><span color="#000000" style="color: #000000;">总计</span></strong></td>
+<td height="61" valign="top" width="69" nowrap="nowrap"><strong><span color="#000000" style="color: #000000;">100%</span></strong></td>
+<td height="61" valign="top" width="103" nowrap="nowrap">
+<p><strong><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;">总用时</span></span></strong></p>
+<p><strong><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;">7.5h</span></span></strong></p>
+</td>
+<td height="46" valign="top" width="177" nowrap="nowrap">
+<p><strong><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;">总估计的用时</span></span></strong></p>
+<p><strong><span face="Microsoft YaHei UI" style="font-family: &#39;Microsoft YaHei UI&#39;;"><span color="#000000" style="color: #000000;">5.75h</span></span></strong></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2013-10-21 01:33 Forwil 阅读(10) 评论(1)  <a href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?postid=3379829" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+	
+		
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_DayItem_3_ImageLink_3" href="http://www.cnblogs.com/Forwil/archive/2013/09/29.html">2013年9月29日</a>				  
+	</div>
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_DayItem_3_DayList_3_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/Forwil/p/3346402.html">homework-02</a>
+			</div>
+			<div class="postCon"><h1>回答问题</h1>
+<p><span>描述在这么多相似的需求面前, 你怎么维护你的设计 (父类/子类/基类, UML, 设计模式,&nbsp; 或者其它方法) 让整个程序的架构不至于崩溃的?</span></p>
+<p>答：处理这种问题显然还是面向过程比较方便，像这种写完了测试通过了就扔的代码没有必要去维护其扩展性，重用性。更别说什么uml父类子类繁琐的东西，用最简单的方法解决问题就好了。如果是web应用或者桌面应用才需要曲考虑这些所谓维护设计吧。</p>
+<p><span>给出你做单元测试/代码覆盖率的最终覆盖率的报告, 用截屏显示你的代码覆盖率</span></p>
+<p>答：不会用VS，在linux下用了lcov来生成覆盖率，并成生了结果html，详见github上的<strong class="final-path"><a href="https://github.com/Forwil/homework-02/blob/master/maxsum.c.gcov">maxsum.c.gcov</a>和<a href="https://github.com/Forwil/homework-02/tree/master/resu">resu/index.html</a></strong>。</p>
+<p><span>阅读&nbsp;<a href="http://www.cnblogs.com/xinz/archive/2011/10/22/2220872.html">工程师的能力评估和发展</a>&nbsp;和相关文章, 在完成作业的时候记录自己花费的时间, 并填下表。如果你对有些术语不太清楚，请查看教材和其它资料。如果你认为你不需要做某个步骤, 那就跳过去。&nbsp;</span></p>
+<p>答：跳过。</p>
+<p><span>你在这个作业中学到了什么?&nbsp; 有什么好的设计值得分享?&nbsp; 感想如何 (太容易 / 太难 / 太无趣)?</span></p>
+<p>答：学了一下Markdown来写文档，表示很不错。重新复习了一下单调队列。对于第三问的感想：太难。</p>
+<h1>问题重述</h1>
+<p>这次作业略繁琐。需要在一个程序内支持传递运行参数，支持横向相通，纵向相通，扩展子区域(随意联通)。</p>
+<h2>问题分析</h2>
+<p>需要重新构造程序，支持传入参数，有-v-h-a三种，如果是c语言的话，在<code>main()</code>函数内加<code>int argc,char *argv[]</code>就可以引用传入的参数，其中文件名在<code>argv[argc-1]</code>里，程序名在<code>argv[0]</code>里，剩下的就是支持的选项。</p>
+<h3>只有-v和-h怎么做</h3>
+<p>-v是上下联通，-h是左右联通。对于环形问题很容易想到的方法就是复制一份接在矩形后边，比如如果需要支持左右联通-h，那么如果原来的矩形是：</p>
+<blockquote>
+<p>5 6 -3 8 -9 2</p>
+</blockquote>
+<p>则可以往右边复制一份自己接上，变成</p>
+<blockquote>
+<p>5 6 -3 8 -9 2 | 5 6 -3 8 -9 2</p>
+</blockquote>
+<p>这样就能够包含所有环形结构，不过有个问题，这样求出来会包含长度大于m的结果，而这是不符合题意的。</p>
+<p>为了避免这样的问题，从<a href="http://www.cnblogs.com/Forwil/p/3329933.html">之前的解法</a>很难再改进。</p>
+<p>另外-v只需要限制上下区间的距离就能避免不合题意的情况，所以不用特殊处理。</p>
+<h3>另一种思路</h3>
+<p>换一种思路去考虑这个问题就比较容易了，令<code>sum[i]</code>表示<code>sigma{a[j],1&lt;=j&lt;=i}</code>(其中<code>sum[0]=0</code>)，我们的目的是最大化<code>sum[a]-sum[b]</code>，即：</p>
+<blockquote>
+<p>ans=Max{sum[a]-sum[b],0&lt;=b&lt;=a&lt;=m}</p>
+</blockquote>
+<p>从左向右循环，记录最小的<code>sum[min]</code>，对于每个<code>i</code>，以<code>a[i]</code>结尾的最大和的子串就是<code>sum[i]-sum[min]</code>，所以只需要不断更新<code>sum[min]</code>并计算最大的<code>sum[i]-sum[min]</code>就行了。时间复杂度也是<code>O(N)</code>。</p>
+<p>为了限制长度<code>i-min&lt;=m</code>，可以维护一个队列<code>dd[]</code>，其中队头是<code>t</code>,队尾是<code>w</code>。其中<code>dd[i].value</code>是其<code>sum</code>值，而<code>dd[i].id</code>是该<code>sum</code>值对应的<code>i</code>。</p>
+<p>维护队列t-w按<code>dd[].value</code>从小到大排序，每次取出<code>dd[t]</code>便为需要的<code>sum[min]</code>。而每次计算完一个<code>sum</code>值需要插入到队尾。</p>
+<p>若<code>dd[t].id</code>距离当前i大于m，也就是取得了不符合规定的区间，那么该<code>dd[t]</code>就不能被使用，显然该值同样不能被大于i的sum使用，所以应该让其出队。</p>
+<p>新加入的<code>sum[i]</code>到<code>dd[w]</code>中需要做一次插入排序，而显然所有大于<code>sum[i]</code>的队列里的元素都应该被去除。</p>
+<p>所以在一次循环中，每个点只会进入单调队列一次,而且再被插入的时候就会被淘汰。所以维护单调队列不会带来复杂度的增加，仅会带来常数的增加。所以时间复杂度依然为O(n^2*m)</p>
+<h3>扩展子区域 -a如何实现</h3>
+<p>大概想了一下可以用状态压缩动态规划来做，这样可以得到最优解。</p>
+<p>最朴素的想法是用1表示选定格子，0表示不选定格子，一行一行进行递推，只有上面的状态和下面的状态有联通才能转移。</p>
+<p>具体一点说，用Dp[i][status]来表示第i行，状态为status的方格，其取到的最优子区域和是多少。用Canappend(status1,status2)来表示两个状态是否能转移。则动态规划方程为:</p>
+<blockquote>
+<p>Dp[i][status]=Max{Dp[i-1][status_i],status_i in status_all and Canappend(status,status_i)}+cost[i][status]</p>
+</blockquote>
+<p>其中cost[i][status]为取第i行中status的状态所带来的和。</p>
+<p>这种想法很简单，不过可惜是错的。</p>
+<p>很明显，状态数是不够的，因为单单有0和1表示的信息不够，它只能表示纵向联通的信息，而不能表示横向联通，这样最直接的结果就是终状态的合理性无法判断，所以要正确进行Dp，还需要额外的信息量。</p>
+<p>用0-k表示格子的选取情况，其中0表示不取，1-k表示其处于某种联通状态。比如说</p>
+<blockquote>
+<p>0 1 1 2 0 2 1</p>
+</blockquote>
+<p>表示其中{2,3,7}为一个联通块(不管它到底怎么连的，反正在它上边就是连上了),{4,6}是另一个联通块。这样表示的信息就足够了。</p>
+<p>但信息变多带来的是转移的复杂性，一行一行转移所需要处理的状态有点略多。</p>
+<p>据说可以用插头Dp来实现简单转移，我看了下<a href="http://wenku.baidu.com/view/a6dce6c76137ee06eff918d1.html">一篇论文</a>，发现实现起来还是有点微难的。其复杂度上界大概是O((m/2)^m*n)，在n，m&lt;=32的情况下的运行时间依然是天文数字。所以任务很艰难，在下能力有限，还是没能写出正解来。</p>
+<p>另外有一种想法是先把所有联通的正值点抽象成一个点，然后再在这些新的"大点"上作最小生成树，不过这显然没法得到最优解。</p>
+<h3>程序</h3>
+<p>程序只实现了-h -v两种参数。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;73131d3d-aff2-41d5-a3b0-4306a4483656&#39;)"><img id="code_img_closed_73131d3d-aff2-41d5-a3b0-4306a4483656" class="code_img_closed" src="./Forwil - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_73131d3d-aff2-41d5-a3b0-4306a4483656" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;73131d3d-aff2-41d5-a3b0-4306a4483656&#39;,event)" src="./Forwil - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_73131d3d-aff2-41d5-a3b0-4306a4483656" class="cnblogs_code_hide">
+<pre><span style="color: #008080;">  1</span> #include&lt;stdio.h&gt;
+<span style="color: #008080;">  2</span> 
+<span style="color: #008080;">  3</span> <span style="color: #0000ff;">#define</span> MAXN 1000
+<span style="color: #008080;">  4</span> <span style="color: #0000ff;">#define</span> MAXM 1000
+<span style="color: #008080;">  5</span> <span style="color: #0000ff;">#define</span> MINV (-2147483647)
+<span style="color: #008080;">  6</span> <span style="color: #0000ff;">int</span> n,m,a[<span style="color: #800080;">2</span>*MAXN+<span style="color: #800080;">2</span>][<span style="color: #800080;">2</span>*MAXM+<span style="color: #800080;">2</span>],dd[<span style="color: #800080;">2</span>*MAXM+<span style="color: #800080;">2</span>],id[<span style="color: #800080;">2</span>*MAXM+<span style="color: #800080;">2</span><span style="color: #000000;">];
+</span><span style="color: #008080;">  7</span> 
+<span style="color: #008080;">  8</span> <span style="color: #0000ff;">void</span> input(<span style="color: #0000ff;">char</span> *<span style="color: #000000;">cin)
+</span><span style="color: #008080;">  9</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 10</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,j;
+</span><span style="color: #008080;"> 11</span>     freopen(cin,<span style="color: #800000;">"</span><span style="color: #800000;">r</span><span style="color: #800000;">"</span><span style="color: #000000;">,stdin);
+</span><span style="color: #008080;"> 12</span>     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">n);
+</span><span style="color: #008080;"> 13</span>     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">m);
+</span><span style="color: #008080;"> 14</span>     <span style="color: #0000ff;">for</span>(i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 15</span>         <span style="color: #0000ff;">for</span>(j=<span style="color: #800080;">0</span>;j&lt;m;j++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 16</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 17</span>             scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">a[i][j]);
+</span><span style="color: #008080;"> 18</span> <span style="color: #000000;">            getchar();
+</span><span style="color: #008080;"> 19</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 20</span> <span style="color: #000000;">}
+</span><span style="color: #008080;"> 21</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> donocir()
+</span><span style="color: #008080;"> 22</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 23</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,j,k,sum,ans;
+</span><span style="color: #008080;"> 24</span>     ans=<span style="color: #000000;">MINV;
+</span><span style="color: #008080;"> 25</span>     <span style="color: #0000ff;">int</span> p[MAXM+<span style="color: #800080;">2</span><span style="color: #000000;">];
+</span><span style="color: #008080;"> 26</span>     <span style="color: #0000ff;">for</span> (i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 27</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;"> 28</span>         <span style="color: #0000ff;">for</span>(k=<span style="color: #800080;">0</span>;k&lt;m;k++) p[k]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 29</span>         <span style="color: #0000ff;">for</span> (j=i;j&lt;n;j++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 30</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 31</span>             sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 32</span>             <span style="color: #0000ff;">for</span> (k=<span style="color: #800080;">0</span>;k&lt;m;k++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 33</span> <span style="color: #000000;">                {
+</span><span style="color: #008080;"> 34</span>                 p[k]+=<span style="color: #000000;">a[j][k];
+</span><span style="color: #008080;"> 35</span>                 <span style="color: #0000ff;">if</span> (sum&lt;<span style="color: #800080;">0</span>)sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 36</span>                 sum+=<span style="color: #000000;">p[k];
+</span><span style="color: #008080;"> 37</span>                 <span style="color: #0000ff;">if</span> (sum&gt;<span style="color: #000000;">ans)
+</span><span style="color: #008080;"> 38</span>                     ans=<span style="color: #000000;">sum;
+</span><span style="color: #008080;"> 39</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;"> 40</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 41</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 42</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> ans;
+</span><span style="color: #008080;"> 43</span> <span style="color: #000000;">}
+</span><span style="color: #008080;"> 44</span> <span style="color: #0000ff;">int</span> docir(<span style="color: #0000ff;">int</span> ish,<span style="color: #0000ff;">int</span><span style="color: #000000;"> isv)
+</span><span style="color: #008080;"> 45</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 46</span>     <span style="color: #0000ff;">int</span> i,k,j,l,p[<span style="color: #800080;">2</span>*MAXM+<span style="color: #800080;">2</span>],nn,mm,ans=<span style="color: #000000;">MINV,sum,t,w,ai,aj,ak,at;
+</span><span style="color: #008080;"> 47</span>     nn=n; mm=<span style="color: #000000;">m;
+</span><span style="color: #008080;"> 48</span>     <span style="color: #0000ff;">for</span>(i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 49</span>         <span style="color: #0000ff;">for</span>(j=<span style="color: #800080;">0</span>;j&lt;m;j++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 50</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 51</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;">(ish)
+</span><span style="color: #008080;"> 52</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 53</span>                 a[i][j+m]=<span style="color: #000000;">a[i][j];
+</span><span style="color: #008080;"> 54</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 55</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;">(isv)
+</span><span style="color: #008080;"> 56</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 57</span>                 a[i+n][j]=<span style="color: #000000;">a[i][j];
+</span><span style="color: #008080;"> 58</span>                 a[i+n][j+m]=<span style="color: #000000;">a[i][j];
+</span><span style="color: #008080;"> 59</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 60</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 61</span>     <span style="color: #0000ff;">if</span>(isv)nn=<span style="color: #800080;">2</span>*n; <span style="color: #0000ff;">else</span> nn=<span style="color: #000000;">n;
+</span><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">if</span>(ish)mm=<span style="color: #800080;">2</span>*m; <span style="color: #0000ff;">else</span> mm=<span style="color: #000000;">m;
+</span><span style="color: #008080;"> 63</span>     <span style="color: #0000ff;">for</span>(i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 64</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">for</span>(k=<span style="color: #800080;">0</span>;k&lt;mm;k++) p[k]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 66</span>         <span style="color: #0000ff;">for</span>(j=i;j&lt;nn &amp;&amp; j&lt;i+n;j++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 67</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;"> 68</span>             t=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 69</span>             w=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 70</span>             dd[t]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 71</span>             id[t]=-<span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 72</span>             sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 73</span>             <span style="color: #0000ff;">for</span>(k=<span style="color: #800080;">0</span>;k&lt;mm;k++<span style="color: #000000;">)
+</span><span style="color: #008080;"> 74</span> <span style="color: #000000;">                {
+</span><span style="color: #008080;"> 75</span>                 p[k]+=<span style="color: #000000;">a[j][k];
+</span><span style="color: #008080;"> 76</span>                 sum+=<span style="color: #000000;">p[k];
+</span><span style="color: #008080;"> 77</span>                 <span style="color: #0000ff;">while</span>(k-id[t] &gt; m)t++<span style="color: #000000;">;
+</span><span style="color: #008080;"> 78</span>                 <span style="color: #0000ff;">if</span> (sum-dd[t] &gt;<span style="color: #000000;"> ans)
+</span><span style="color: #008080;"> 79</span> <span style="color: #000000;">                    {
+</span><span style="color: #008080;"> 80</span>                     ans=sum-<span style="color: #000000;">dd[t];
+</span><span style="color: #008080;"> 81</span>                     ai=<span style="color: #000000;">i;
+</span><span style="color: #008080;"> 82</span>                     aj=<span style="color: #000000;">j;
+</span><span style="color: #008080;"> 83</span>                     ak=<span style="color: #000000;">k;
+</span><span style="color: #008080;"> 84</span>                     at=<span style="color: #000000;">id[t];
+</span><span style="color: #008080;"> 85</span> <span style="color: #000000;">                    }
+</span><span style="color: #008080;"> 86</span>                 <span style="color: #0000ff;">while</span>(sum&lt;dd[w] &amp;&amp; w&gt;=t) w=w-<span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 87</span>                 w=w+<span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 88</span>                 dd[w]=<span style="color: #000000;">sum;
+</span><span style="color: #008080;"> 89</span>                 id[w]=<span style="color: #000000;">k;
+</span><span style="color: #008080;"> 90</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;"> 91</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 92</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 93</span>     printf(<span style="color: #800000;">"</span><span style="color: #800000;">%d\n%d\n%d\n%d\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,ai,aj,at,ak);
+</span><span style="color: #008080;"> 94</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> ans;
+</span><span style="color: #008080;"> 95</span> <span style="color: #000000;">}
+</span><span style="color: #008080;"> 96</span> <span style="color: #0000ff;">int</span> main(<span style="color: #0000ff;">int</span> argc,<span style="color: #0000ff;">char</span> *<span style="color: #000000;">argv[])
+</span><span style="color: #008080;"> 97</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 98</span>     <span style="color: #0000ff;">int</span> i,j,ish=<span style="color: #800080;">0</span>,isv=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 99</span>     <span style="color: #0000ff;">if</span> (argc==<span style="color: #800080;">1</span><span style="color: #000000;">)
+</span><span style="color: #008080;">100</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;">101</span>             printf(<span style="color: #800000;">"</span><span style="color: #800000;">no input file!\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+</span><span style="color: #008080;">102</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">103</span>     <span style="color: #0000ff;">if</span> (argc==<span style="color: #800080;">2</span><span style="color: #000000;">)
+</span><span style="color: #008080;">104</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;">105</span>             input(argv[<span style="color: #800080;">1</span><span style="color: #000000;">]);
+</span><span style="color: #008080;">106</span>             printf(<span style="color: #800000;">"</span><span style="color: #800000;">%d\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,donocir());
+</span><span style="color: #008080;">107</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">108</span>     <span style="color: #0000ff;">else</span>
+<span style="color: #008080;">109</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;">110</span>             input(argv[argc-<span style="color: #800080;">1</span><span style="color: #000000;">]);
+</span><span style="color: #008080;">111</span>             <span style="color: #0000ff;">for</span> (i=<span style="color: #800080;">1</span>;i&lt;argc-<span style="color: #800080;">1</span>;i++<span style="color: #000000;">)
+</span><span style="color: #008080;">112</span>                 <span style="color: #0000ff;">for</span>(j=<span style="color: #800080;">1</span>;argv[i][j]!=<span style="color: #800000;">'</span><span style="color: #800000;">\0</span><span style="color: #800000;">'</span>;j++<span style="color: #000000;">)
+</span><span style="color: #008080;">113</span> <span style="color: #000000;">                {
+</span><span style="color: #008080;">114</span>                 <span style="color: #0000ff;">if</span> (argv[i][j]==<span style="color: #800000;">'</span><span style="color: #800000;">h</span><span style="color: #800000;">'</span>) ish=<span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;">115</span>                 <span style="color: #0000ff;">if</span> (argv[i][j]==<span style="color: #800000;">'</span><span style="color: #800000;">v</span><span style="color: #800000;">'</span>) isv=<span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;">116</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">117</span>             printf(<span style="color: #800000;">"</span><span style="color: #800000;">%d\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,docir(ish,isv));
+</span><span style="color: #008080;">118</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">119</span>     <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">120</span> }</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<h3>执行方法</h3>
+<p>运行<code>./maxsum [options] &lt;filename&gt;</code></p>
+<p>支持 -h -v -hv 和 -h -v</p></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2013-09-29 21:50 Forwil 阅读(21) 评论(1)  <a href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?postid=3346402" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+	
+		
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_DayItem_4_ImageLink_4" href="http://www.cnblogs.com/Forwil/archive/2013/09/19.html">2013年9月19日</a>				  
+	</div>
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_DayItem_4_DayList_4_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/Forwil/p/3329933.html">homework-01</a>
+			</div>
+			<div class="postCon"><h1>参考书选择</h1>
+<p>选了电子版---[代码大全2英文版(完整清晰版)].chm</p>
+<p>穷逼没钱买书好烦躁T.T</p>
+<h1>问题分析</h1>
+<h2>一维的情况</h2>
+<p>最朴素最暴力的方法是枚举所有的sum[i,j]，算出其值然后取最大。</p>
+<p>时间复杂度为O(N^3)，注意到sum[i,j]=sum[i,j-1]+a[i,j]，所以不必每个sum[i,j]都重新算一遍，只需要通过前面的值来递推即可。时间复杂度降为O(N^2)</p>
+<p>我们对所有的sum[i,j]来分类，用tail[j]表示所有的sum[i,j]的最大值，即tail[j]=max{sum[i,j]|1&lt;=i&lt;=j}，表示所有由a[j]结尾的子串中的最大的和。</p>
+<p>那么我们的目标转化为求最大的tail，不过这样分析起来似乎没有任何的优化。</p>
+<p>不过我们发现，假设tail[j-1]已经求出了，那么tail[j]只有取两种情况：</p>
+<ul>
+<li>以tail[j-1]和a[j]组成新的子串</li>
+<li>放弃tail[j-1]，重新由a[j]为一单独的新串。</li>
+</ul>
+<p>因此我们得到如下状态转移方程：</p>
+<p>tail[j]=max{tail[j-1]+a[j],a[j]}</p>
+<p>求解问题只需从小到大遍历一遍O(N)的状态空间，每次转移需要O(1)时间复杂度，所以总共只有O(N)时间复杂度。</p>
+<h2>二维的情况</h2>
+<p>在有了一维度的解答之后，我们很容易想到通过枚举上下界来把二维的问题转化为一维，需要枚举C(N,2)+N种上下界，每一种需要O(M)时间复杂度来计算，因此总共需要O(N^2*M)的时间复杂度</p>
+<h1>编程实现</h1>
+<p>一维的情况</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;9690316f-eb8f-4481-b29d-2eed114fd1f3&#39;)"><img id="code_img_closed_9690316f-eb8f-4481-b29d-2eed114fd1f3" class="code_img_closed" src="./Forwil - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_9690316f-eb8f-4481-b29d-2eed114fd1f3" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;9690316f-eb8f-4481-b29d-2eed114fd1f3&#39;,event)" src="./Forwil - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_9690316f-eb8f-4481-b29d-2eed114fd1f3" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> #include&lt;stdio.h&gt;
+<span style="color: #008080;"> 2</span> <span style="color: #0000ff;">#define</span> MAXN 100000
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">#define</span> MINV (-(1&lt;&lt; 31 -1))
+<span style="color: #008080;"> 4</span> <span style="color: #0000ff;">int</span> maxsum(<span style="color: #0000ff;">int</span> p[],<span style="color: #0000ff;">int</span><span style="color: #000000;"> size)
+</span><span style="color: #008080;"> 5</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,sum,ans;
+</span><span style="color: #008080;"> 7</span>     ans=<span style="color: #000000;">MINV;
+</span><span style="color: #008080;"> 8</span>     sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">for</span> (i=<span style="color: #800080;">0</span>;i&lt;size;i++<span style="color: #000000;">)
+</span><span style="color: #008080;">10</span> <span style="color: #000000;">    {
+</span><span style="color: #008080;">11</span>         <span style="color: #0000ff;">if</span> (sum&lt;<span style="color: #800080;">0</span><span style="color: #000000;">)
+</span><span style="color: #008080;">12</span>             sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">13</span>         sum+=<span style="color: #000000;">p[i];
+</span><span style="color: #008080;">14</span>         <span style="color: #0000ff;">if</span> (sum&gt;<span style="color: #000000;">ans)
+</span><span style="color: #008080;">15</span>             ans=<span style="color: #000000;">sum    ;    
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">17</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> ans;
+</span><span style="color: #008080;">18</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">19</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> main()
+</span><span style="color: #008080;">20</span> <span style="color: #000000;">{
+</span><span style="color: #008080;">21</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,n,p[MAXN];
+</span><span style="color: #008080;">22</span>     freopen(<span style="color: #800000;">"</span><span style="color: #800000;">input1.txt</span><span style="color: #800000;">"</span>,<span style="color: #800000;">"</span><span style="color: #800000;">r</span><span style="color: #800000;">"</span><span style="color: #000000;">,stdin);
+</span><span style="color: #008080;">23</span>     freopen(<span style="color: #800000;">"</span><span style="color: #800000;">output1.txt</span><span style="color: #800000;">"</span>,<span style="color: #800000;">"</span><span style="color: #800000;">w</span><span style="color: #800000;">"</span><span style="color: #000000;">,stdout);
+</span><span style="color: #008080;">24</span>     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">n);
+</span><span style="color: #008080;">25</span>     <span style="color: #0000ff;">for</span>(i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;">26</span>                     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">p[i]);
+</span><span style="color: #008080;">27</span>     printf(<span style="color: #800000;">"</span><span style="color: #800000;">%d\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,maxsum(p,n));
+</span><span style="color: #008080;">28</span>     <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">29</span> }</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code </span></div>
+<p><span style="line-height: 1.5;">二维的情况</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;2236571f-d13e-40ae-86ad-4f54e6d9ef7b&#39;)"><img id="code_img_closed_2236571f-d13e-40ae-86ad-4f54e6d9ef7b" class="code_img_closed" src="./Forwil - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_2236571f-d13e-40ae-86ad-4f54e6d9ef7b" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;2236571f-d13e-40ae-86ad-4f54e6d9ef7b&#39;,event)" src="./Forwil - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_2236571f-d13e-40ae-86ad-4f54e6d9ef7b" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> #include&lt;stdio.h&gt;
+<span style="color: #008080;"> 2</span> <span style="color: #0000ff;">#define</span> MAXN 1000
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">#define</span> MAXM 1000
+<span style="color: #008080;"> 4</span> <span style="color: #0000ff;">#define</span> MINV (-(1&lt;&lt; 31 -1))
+<span style="color: #008080;"> 5</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> n,m,a[MAXN][MAXM];
+</span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">int</span> maxsum(<span style="color: #0000ff;">int</span> N,<span style="color: #0000ff;">int</span><span style="color: #000000;"> M)
+</span><span style="color: #008080;"> 7</span> <span style="color: #000000;">{
+</span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,j,k,sum,ans;
+</span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> p[M];
+</span><span style="color: #008080;">10</span>     <span style="color: #0000ff;">for</span> (i=<span style="color: #800080;">0</span>;i&lt;M;i++) p[i]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">11</span>     ans=<span style="color: #000000;">MINV;
+</span><span style="color: #008080;">12</span>     sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">13</span>     <span style="color: #0000ff;">for</span> (i=<span style="color: #800080;">0</span>;i&lt;N;i++<span style="color: #000000;">)
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">        {
+</span><span style="color: #008080;">15</span>         <span style="color: #0000ff;">for</span>(j=i;j&lt;N;j++<span style="color: #000000;">)
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;">17</span>             sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">for</span> (k=<span style="color: #800080;">0</span>;k&lt;M;k++<span style="color: #000000;">)
+</span><span style="color: #008080;">19</span> <span style="color: #000000;">                {
+</span><span style="color: #008080;">20</span>                 p[k]+=<span style="color: #000000;">a[j][k];
+</span><span style="color: #008080;">21</span>                 <span style="color: #0000ff;">if</span> (sum&lt;<span style="color: #800080;">0</span><span style="color: #000000;">)
+</span><span style="color: #008080;">22</span>                     sum=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">23</span>                 sum+=<span style="color: #000000;">p[k];
+</span><span style="color: #008080;">24</span>                 <span style="color: #0000ff;">if</span> (sum&gt;<span style="color: #000000;">ans)
+</span><span style="color: #008080;">25</span>                     ans=<span style="color: #000000;">sum;
+</span><span style="color: #008080;">26</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">27</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">28</span>         <span style="color: #0000ff;">for</span> (k=<span style="color: #800080;">0</span>;k&lt;M;k++)p[k]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">29</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">30</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> ans;
+</span><span style="color: #008080;">31</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">32</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> main()
+</span><span style="color: #008080;">33</span> <span style="color: #000000;">{
+</span><span style="color: #008080;">34</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> i,j;
+</span><span style="color: #008080;">35</span>     freopen(<span style="color: #800000;">"</span><span style="color: #800000;">input2.txt</span><span style="color: #800000;">"</span>,<span style="color: #800000;">"</span><span style="color: #800000;">r</span><span style="color: #800000;">"</span><span style="color: #000000;">,stdin);
+</span><span style="color: #008080;">36</span>     freopen(<span style="color: #800000;">"</span><span style="color: #800000;">output2.txt</span><span style="color: #800000;">"</span>,<span style="color: #800000;">"</span><span style="color: #800000;">w</span><span style="color: #800000;">"</span><span style="color: #000000;">,stdout);
+</span><span style="color: #008080;">37</span>     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">n);
+</span><span style="color: #008080;">38</span>     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">m);
+</span><span style="color: #008080;">39</span>     <span style="color: #0000ff;">for</span>(i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+</span><span style="color: #008080;">40</span>     <span style="color: #0000ff;">for</span>(j=<span style="color: #800080;">0</span>;j&lt;m;j++<span style="color: #000000;">)
+</span><span style="color: #008080;">41</span> <span style="color: #000000;">                    {
+</span><span style="color: #008080;">42</span>                     scanf(<span style="color: #800000;">"</span><span style="color: #800000;">%d,</span><span style="color: #800000;">"</span>,&amp;<span style="color: #000000;">a[i][j]);
+</span><span style="color: #008080;">43</span>                     <span style="color: #008000;">//</span><span style="color: #008000;">printf("%d ",a[i][j]);</span>
+<span style="color: #008080;">44</span> <span style="color: #000000;">                    }
+</span><span style="color: #008080;">45</span>     printf(<span style="color: #800000;">"</span><span style="color: #800000;">%d\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,maxsum(n,m));
+</span><span style="color: #008080;">46</span>     <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">47</span> }</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code </span></div>
+<h1>测试结果</h1>
+<p>input1.txt</p>
+<div class="cnblogs_code">
+<pre><span style="color: #800080;">6</span><span style="color: #000000;">,
+</span><span style="color: #800080;">5</span>,<span style="color: #800080;">6</span>,-<span style="color: #800080;">3</span>,<span style="color: #800080;">8</span>,-<span style="color: #800080;">9</span>,<span style="color: #800080;">2</span></pre>
+</div>
+<p><span style="line-height: 1.5;">output1.txt</span></p>
+<p>　　16</p>
+<p>input2.txt</p>
+<div class="cnblogs_code">
+<pre><span style="color: #800080;">3</span><span style="color: #000000;">,
+</span><span style="color: #800080;">6</span><span style="color: #000000;">,
+</span><span style="color: #800080;">5</span>,<span style="color: #800080;">6</span>,-<span style="color: #800080;">3</span>,<span style="color: #800080;">8</span>,-<span style="color: #800080;">9</span>,<span style="color: #800080;">2</span>
+<span style="color: #800080;">1</span>,-<span style="color: #800080;">12</span>,<span style="color: #800080;">20</span>,<span style="color: #800080;">0</span>,-<span style="color: #800080;">3</span>,-<span style="color: #800080;">5</span>
+-<span style="color: #800080;">9</span>,-<span style="color: #800080;">7</span>,-<span style="color: #800080;">3</span>,<span style="color: #800080;">6</span>,<span style="color: #800080;">7</span>,-<span style="color: #800080;">1</span></pre>
+</div>
+<p>output2.txt</p>
+<p>　　28</p></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2013-09-19 19:52 Forwil 阅读(19) 评论(1)  <a href="http://www.cnblogs.com/Forwil/admin/EditPosts.aspx?postid=3329933" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+	
+<div class="topicListFooter"><a href="http://www.cnblogs.com/Forwil/default.html?OnlyTitle=1">仅列出标题</a>&nbsp;&nbsp;</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/Forwil/">Forwil</a><br>园龄：<a href="http://home.cnblogs.com/u/Forwil/" title="入园时间：2013-09-16">1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/Forwil/followers/">0</a><br>关注：<a href="http://home.cnblogs.com/u/Forwil/followees/">0</a><div id="p_b_follow"></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="displya:none"><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2013/10/01&#39;);return false;">&lt;</a></td><td align="center">2013年11月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2013/12/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/Forwil/archive/2013/11/03.html"><u>3</u></a></td><td class="CalTodayDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+
+
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_0" href="http://www.cnblogs.com/Forwil/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_1" href="http://www.cnblogs.com/Forwil/MyComments.html">我的评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_2" title="我发表过评论的随笔" href="http://www.cnblogs.com/Forwil/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_3" href="http://www.cnblogs.com/Forwil/RecentComments.html">最新评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_4" href="http://www.cnblogs.com/Forwil/tag/">我的标签</a></li>
+	
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div>
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/Forwil/tag/homework-01/">homework-01</a>(1)</li>
+</ul>
+</div>
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/Forwil/archive/2013/11.html">2013年11月 (1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/Forwil/archive/2013/10.html">2013年10月 (2)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/Forwil/archive/2013/09.html">2013年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/Forwil/p/3379829.html#2803172">1. Re:homework-03</a></li>
+    <li class="recent_comment_body">写的不错，加油</li>
+    <li class="recent_comment_author">--现代程序设计助教</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/Forwil/p/3346402.html#2791003">2. Re:homework-02</a></li>
+    <li class="recent_comment_body">虽然连通的没写出来，但是说出了自己的想法，不错，博客写的不错，继续加油</li>
+    <li class="recent_comment_author">--现代程序设计助教</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/Forwil/p/3329933.html#2779351">3. Re:homework-01</a></li>
+    <li class="recent_comment_body">二维和一维都写出了，思路，测试都写的不错，加油</li>
+    <li class="recent_comment_author">--现代程序设计助教</li>
+</ul>
+</div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/Forwil/p/3346402.html">1. homework-02(21)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3329933.html">2. homework-01(19)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3391383.html">3. homework-04(19)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3404549.html">4. homework-05(11)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3379829.html">5. homework-03(10)</a></li></ul></div>
+</div>
+
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/Forwil/p/3329933.html">1. homework-01(1)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3346402.html">2. homework-02(1)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3379829.html">3. homework-03(1)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3404549.html">4. homework-05(0)</a></li><li><a href="http://www.cnblogs.com/Forwil/p/3391383.html">5. homework-04(0)</a></li></ul></div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"></div>
+</div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2013 Forwil
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<script type="text/javascript" src="./Forwil - 博客园_files/google-analytics.js"></script>
+
+
+</body></html>

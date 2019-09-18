@@ -1,0 +1,48 @@
+$def with(n,m,f,hsize,lsize,low,hig)
+<html>
+	<head>
+	<title>HeiHei</title>
+        <script type="text/javascript" src="./static/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="./static/index.css" />	
+	</head>
+<body align="center" onload="get_json()">
+	<h1>一维/二维最大子矩阵和求解图形化展示</h1>
+	<p align="right">by <b>forwil 11091222</b></p>
+	<form method="POST" enctype="multipart/form-data" action="">
+		<hr/>
+		<input type="file" name="myfile" />
+		<br/>
+		<input type="submit" value="Start" onclick="return check();">
+		-h<input type="checkbox" name="h">
+		-v<input type="checkbox" name="v">
+		<br/>
+		Row = <input type="text" name="hsize" id="hsize" class="t" maxlength="4" value="$hsize">
+		Col = <input type="text" name="lsize" id="lsize" class="t" maxlength="4" value="$lsize">
+		<br/>
+		Random From = <input type="text" name="low" id="low" class="t" maxlength="4" value="$low">
+		to = <input type="text" name="hig"  id="hig" class="t" maxlength="4" value="$hig">
+		<hr/>
+		<input type="button" value="Stop" onclick="stop()">
+		<br/>
+		<input type="button" value="<<" onclick="go(-1)">
+		<input type="button" value="<" onclick="draw_last()" >
+		Step:<span id="step">0</span>
+		<input type="button" value=">" onclick="draw_next()">
+		<input type="button" value=">>" onclick="go(1)">
+		<br/>
+	$if f:
+		n = <b>$n </b>
+		m = <b>$m</b>
+		Speed = <b id="speed"></b>
+		<table align="center" id="table">
+		$for i in range(0,n):
+			<tr>
+			$for j in range(0,m):
+				<td>$f[i][j]</td>
+			</tr>
+		</table>
+		Now sum = <b><span id="now"></span></b><br/>
+		Max sum = <b><span id="max"></span></b>
+	</form>
+</body>
+</html>

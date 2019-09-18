@@ -1,0 +1,64 @@
+请用LINUX格式的文本编辑器打开！！！
+
+K MXUNIL      OFAQ
+ SPEYELIMSURIVPOU 
+ AI DOCUMENT  ENS 
+ VHDROWSSAPPRINTER
+TECCAPMENUFREEWARE
+BRSCOOINOCITOME NR
+ SOUBLIMULTIMEDIAA
+CPUPYFCYBERSPACEMW
+Y NLEASBUGO SDRWEY
+  DOKRAQTBJ O EPLP
+ TCAIEICPEAWIBVOIS
+ OADTTUPNINNB RTFW
+ OR EAU HLHRD EKPO
+JBDN HBLOEOAEWSSID
+PEHSARCAOWRVCHIEZN
+EREVIRDASSSA KTD I
+GIGABYTECEEJL EETW
+FIREWIRE  ERAWDRAH
+
+test  result from my test.c
+
+STATE1:	is good!
+	K   M X-U-N-I-L             O F-A-Q 
+	 \   \       /              | |     
+	  S P E Y-E-L-I-M-S-U-R-I-V P O U   
+	  |\|  \   /                | | |   
+	  A I   D-O-C-U-M-E-N-T     E N S   
+	  | |\  |/                  | | |   
+	  V H D-R-O-W-S-S-A-P P-R-I-N-T-E-R 
+	  | |  /|  \                    |   
+	T E C C A P M-E-N-U F-R-E-E-W-A-R-E 
+	 \   /  | |            /        | | 
+	B R S C O O I N-O-C-I-T-O-M-E   N R 
+	 \ \|/  | | |        /          | | 
+	  S O U B L I M-U-L-T-I-M-E-D-I-A A 
+	   \|\| | | |      /|           | | 
+	C-P-U P Y F C-Y-B-E-R-S-P-A-C-E M W 
+	 /  | |\| | |    /  |           | | 
+	Y   N L E A S B-U-G O   S D R W E Y 
+	    |\| |\| |  /    |   |/  |/  | | 
+	    D O K R A Q T B J   O   E P L P 
+	    |\|\  |\ /   \ \|  /|  /| | | | 
+	  T C A I E I-C-P E A W I B V O I S 
+	  | | |\ \|/ \     \|\  |/  | | | | 
+	  O A D T T-U-P-N-I N N B   R T F W 
+	  | |    / \   \   /|\ \    | | | | 
+	  O R   E A U   H L H R D   E K P O 
+	  | |  / \ \ \   /  |\ \ \  | | | | 
+	J B D N   H B L O E O A E W S S I D 
+	| |        \ \ \   /| |\ \ \  | | | 
+	P E H-S-A-R-C A O W R V C H I E Z N 
+	| |          \ \ \  |\|  \ \ \|   | 
+	E R-E-V-I-R-D A S S S A   K T D   I 
+	|              \ \ \| |\   \ \ \  | 
+	G-I-G-A-B-Y-T-E C E E J L   E E T W 
+	             /       \       \   \  
+	F-I-R-E-W-I-R-E     E-R-A-W-D-R-A-H 
+
+STATE2:	is good! n&m = 18
+
+STATE3:	is good!
+

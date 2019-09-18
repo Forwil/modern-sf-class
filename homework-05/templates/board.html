@@ -1,0 +1,94 @@
+$def with(dead,delt,ava,turn,timer,alluped,users,turntime)
+<html>
+	<head>
+	<style>
+	table 
+{
+
+border: 1 solid teal
+			}
+	</style>
+	<script type="text/javascript">
+function loadXMLDoc(loc, toget)
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById(loc).innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET",toget,true);
+xmlhttp.send();
+}
+
+function draw()
+{
+var canvas=document.getElementById('myCanvas');
+var ctx=canvas.getContext('2d');
+var xmlhttp;
+var len;
+ctx.clearRect(0,0,700,200);
+
+ctx.beginPath();
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET","http://localhost/result",false);
+xmlhttp.send();
+var point = xmlhttp.responseText.split("\n");
+if (point.len>0)
+	{
+	ctx.moveTo(0,200-Math.round(point[0]*2));
+	}
+len = 50;
+if (len>point.len)
+	len=point.len
+for (var i=1;i < len;i++)
+{
+ctx.lineTo(i*(700/len),200-Math.round((point[i]*2)));
+}
+ctx.stroke(); 
+ctx.endPath();
+}
+
+</script>
+<script>
+function update()
+{
+loadXMLDoc("result","/resulthtml");
+loadXMLDoc("score","/scorehtml");
+loadXMLDoc("info","/infohtml");
+loadXMLDoc("turn","/turnhtml");
+setTimeout("draw()",1000);
+setTimeout('update()',1000);
+}
+</script>
+	</head>
+<body onload="update();draw();">
+<h1>NOW is <b id="turn">$turn</b> TURN</h1> 
+<p id="info"></p>
+<p>This game begin every <b>$delt</b> s,Upload close at last <b>$dead</b> s</p>
+<a href='./reg'>Register</a>
+<a href='./attend'>Attend</a> 
+<a href='./totalboard'>Totalboard</a>
+
+<h2>Recently 50 times game's Golden-number-line</h2>
+<div >100</div>
+<canvas id="myCanvas"  width="700" height="200"></canvas>
+<div id ="a">0</div>
+
+<h2>Total score rank</h2>
+<div id="score"></div>
+<h2>Recently 10 times game's Golden number</h2>
+<div id="result"></div>
+</body>
+</html>

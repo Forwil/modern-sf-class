@@ -1,0 +1,201 @@
+        -:    0:Source:maxsum.c
+        -:    0:Graph:maxsum.gcno
+        -:    0:Data:maxsum.gcda
+        -:    0:Runs:8
+        -:    0:Programs:1
+        -:    1:
+        -:    2:#include<stdio.h>
+        -:    3:
+        -:    4:#define MAXN 1000
+        -:    5:#define MAXM 1000
+        -:    6:#define MINV (-2147483647)
+        -:    7:int n,m,a[2*MAXN+2][2*MAXM+2],dd[2*MAXM+2],id[2*MAXM+2];
+        -:    8:
+function input called 8 returned 100% blocks executed 100%
+        8:    9:void input(char *cin)
+        -:   10:{
+        -:   11:	int i,j;
+        8:   12:	freopen(cin,"r",stdin);
+call    0 returned 100%
+        8:   13:	scanf("%d,",&n);
+call    0 returned 100%
+        8:   14:	scanf("%d,",&m);
+call    0 returned 100%
+       40:   15:	for(i=0;i<n;i++)
+branch  0 taken 80%
+branch  1 taken 20% (fallthrough)
+      284:   16:		for(j=0;j<m;j++)
+branch  0 taken 89%
+branch  1 taken 11% (fallthrough)
+        -:   17:			{
+      252:   18:			scanf("%d",&a[i][j]);
+call    0 returned 100%
+      252:   19:			getchar();
+call    0 returned 100%
+        -:   20:			}
+        8:   21:}
+function donocir called 5 returned 100% blocks executed 100%
+        5:   22:int donocir()
+        -:   23:{
+        -:   24:	int i,j,k,sum,ans;
+        5:   25:	ans=MINV;
+        -:   26:	int p[MAXM+2];
+       23:   27:	for (i=0;i<n;i++)
+branch  0 taken 78%
+branch  1 taken 22% (fallthrough)
+        -:   28:		{
+       18:   29:		for(k=0;k<m;k++) p[k]=0;
+branch  0 taken 88%
+branch  1 taken 12% (fallthrough)
+       73:   30:		for (j=i;j<n;j++)
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+        -:   31:			{
+       55:   32:			sum=0;
+      565:   33:			for (k=0;k<m;k++)
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+        -:   34:				{
+      510:   35:				p[k]+=a[j][k];
+      510:   36:				if (sum<0)sum=0;
+branch  0 taken 31% (fallthrough)
+branch  1 taken 69%
+      510:   37:				sum+=p[k];
+      510:   38:				if (sum>ans)
+branch  0 taken 7% (fallthrough)
+branch  1 taken 93%
+       36:   39:					ans=sum;
+        -:   40:				}
+        -:   41:			}
+        -:   42:		}
+        5:   43:	return ans;
+        -:   44:}
+function docir called 3 returned 100% blocks executed 100%
+        3:   45:int docir(int ish,int isv)
+        -:   46:{
+        3:   47:	int i,k,j,l,p[2*MAXM+2],nn,mm,ans=MINV,sum,t,w,ai,aj,ak,at;
+        3:   48:	nn=n; mm=m;
+       17:   49:	for(i=0;i<n;i++)
+branch  0 taken 82%
+branch  1 taken 18% (fallthrough)
+      128:   50:		for(j=0;j<m;j++)
+branch  0 taken 89%
+branch  1 taken 11% (fallthrough)
+        -:   51:			{
+      114:   52:			if(ish)
+branch  0 taken 92% (fallthrough)
+branch  1 taken 8%
+        -:   53:			{
+      105:   54:				a[i][j+m]=a[i][j];
+        -:   55:			}
+      114:   56:			if(isv)
+branch  0 taken 92% (fallthrough)
+branch  1 taken 8%
+        -:   57:			{
+      105:   58:				a[i+n][j]=a[i][j];
+      105:   59:				a[i+n][j+m]=a[i][j];
+        -:   60:			}
+        -:   61:			}
+        3:   62:	if(isv)nn=2*n; else nn=n;
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+        3:   63:	if(ish)mm=2*m; else mm=m;
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+       17:   64:	for(i=0;i<n;i++)
+branch  0 taken 82%
+branch  1 taken 18% (fallthrough)
+        -:   65:		{
+       14:   66:		for(k=0;k<mm;k++) p[k]=0;
+branch  0 taken 94%
+branch  1 taken 6% (fallthrough)
+       93:   67:		for(j=i;j<nn && j<i+n;j++)
+branch  0 taken 97% (fallthrough)
+branch  1 taken 3%
+branch  2 taken 88%
+branch  3 taken 12% (fallthrough)
+        -:   68:			{
+       79:   69:			t=0;
+       79:   70:			w=0;
+       79:   71:			dd[t]=0;
+       79:   72:			id[t]=-1;
+       79:   73:			sum=0;
+     1678:   74:			for(k=0;k<mm;k++)
+branch  0 taken 95%
+branch  1 taken 5% (fallthrough)
+        -:   75:				{
+     1599:   76:				p[k]+=a[j][k];
+     1599:   77:				sum+=p[k];
+     1599:   78:				while(k-id[t] > m)t++;
+branch  0 taken 5%
+branch  1 taken 95% (fallthrough)
+     1599:   79:				if (sum-dd[t] > ans)
+branch  0 taken 2% (fallthrough)
+branch  1 taken 98%
+        -:   80:					{
+       31:   81:					ans=sum-dd[t];
+       31:   82:					ai=i;
+       31:   83:					aj=j;
+       31:   84:					ak=k;
+       31:   85:					at=id[t];
+        -:   86:					}
+     1599:   87:				while(sum<dd[w] && w>=t) w=w-1;
+branch  0 taken 57% (fallthrough)
+branch  1 taken 43%
+branch  2 taken 76%
+branch  3 taken 24% (fallthrough)
+     1599:   88:				w=w+1;
+     1599:   89:				dd[w]=sum;
+     1599:   90:				id[w]=k;
+        -:   91:				}
+        -:   92:			}
+        -:   93:		}
+        -:   94:	//printf("%d\n%d\n%d\n%d\n",ai,aj,at,ak);
+        3:   95:	return ans;
+        -:   96:}
+function main called 8 returned 100% blocks executed 95%
+        8:   97:int main(int argc,char *argv[])
+        -:   98:{
+        8:   99:	int i,j,ish=0,isv=0;
+        8:  100:	if (argc==1)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:  101:		{
+    #####:  102:			printf("no input file!\n");
+call    0 never executed
+        -:  103:		}
+        8:  104:	if (argc==2)
+branch  0 taken 63% (fallthrough)
+branch  1 taken 38%
+        -:  105:		{
+        5:  106:			input(argv[1]);
+call    0 returned 100%
+        5:  107:			printf("%d\n",donocir());
+call    0 returned 100%
+call    1 returned 100%
+        -:  108:		}
+        -:  109:	else
+        -:  110:		{
+        3:  111:			input(argv[argc-1]);
+call    0 returned 100%
+        6:  112:			for (i=1;i<argc-1;i++)
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        7:  113:				for(j=1;argv[i][j]!='\0';j++)
+branch  0 taken 57%
+branch  1 taken 43% (fallthrough)
+        -:  114:				{
+        4:  115:				if (argv[i][j]=='h') ish=1;
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        4:  116:				if (argv[i][j]=='v') isv=1;
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        -:  117:				}
+        3:  118:			printf("%d\n",docir(ish,isv));
+call    0 returned 100%
+call    1 returned 100%
+        -:  119:		}
+        8:  120:    return 0;
+        -:  121:}
+        -:  122:

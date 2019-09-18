@@ -1,0 +1,100 @@
+$def with(dead,delt,ava,turn,timer,alluped,users)
+<html>
+	<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	</head>
+<body>
+<h1>NOW is $turn TURN</h1> 
+<p>LEFT $timer s TO START,
+Now is
+<b>
+$if ava:
+	available
+$else:
+	Unavailable
+</b>
+to upload your number
+</p>
+<p>This game begin every <b>$delt</b> s,Upload close at last <b>$dead</b> s</p>
+<a href='./reg'>Register</a>
+<a href='./attend'>Attend</a> 
+<table border="1">
+<tr>
+<td></td>
+<td><b>Result</b></td>
+$for j in users:
+	<td><b> $j </b></td>
+</tr>
+<tr>
+<td>Score</td>
+<td></td>
+$for j in users:
+	<td>$users[j]</td>
+</tr>
+$for i in alluped[-1:]:
+	<tr>
+		<td>Round:$i['turn']</td>
+	<td> $i['result']</td>
+	$for j in users:
+		$if i['winner']==j:
+			<td><b>$i[j]['num']</b></td>
+		$else:
+			$if i.get(j)!=None:
+				<td> $i[j]['num']</td>
+			$else:
+				<td></td>
+	</tr>
+</table>
+<br/>
+<br/>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script>
+\$(function () {
+        \$('#container').highcharts({
+            title: {
+                text: 'Goden number',
+                x: -20 
+            },
+            xAxis: {
+                categories:
+[
+$for i in alluped[:-1]:
+	$i['turn'],
+$if len(alluped)>=1:
+	$alluped[-1]['turn']
+]		
+            },
+            yAxis: {
+                title: {
+                    text: 'Number'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Golden number',
+                data:
+[
+$for i in alluped[:-1]:
+	$i['result'],
+$if len(alluped)>=1:
+	$alluped[-1]['result']
+]
+            }]
+        });
+    });
+</script>
+</body>
+</html>

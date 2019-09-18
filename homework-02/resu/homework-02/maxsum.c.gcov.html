@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - t.inf - homework-02/maxsum.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">homework-02</a> - maxsum.c<span style="font-size: 80%;"> (source / <a href="maxsum.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">t.inf</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2013-09-30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">           Branch data     Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>                :            : </a>
+<span class="lineNum">       2 </span>                :            : #include&lt;stdio.h&gt;
+<span class="lineNum">       3 </span>                :            : 
+<span class="lineNum">       4 </span>                :            : #define MAXN 1000
+<span class="lineNum">       5 </span>                :            : #define MAXM 1000
+<span class="lineNum">       6 </span>                :            : #define MINV (-2147483647)
+<a name="7"><span class="lineNum">       7 </span>                :            : int n,m,a[2*MAXN+2][2*MAXM+2],dd[2*MAXM+2],id[2*MAXM+2];</a>
+<span class="lineNum">       8 </span>                :            : 
+<span class="lineNum">       9 </span>                :<span class="lineCov">         11 : void input(char *cin)</span>
+<span class="lineNum">      10 </span>                :            : {
+<span class="lineNum">      11 </span>                :            :         int i,j;
+<span class="lineNum">      12 </span>                :<span class="lineCov">         11 :         freopen(cin,&quot;r&quot;,stdin);</span>
+<span class="lineNum">      13 </span>                :<span class="lineCov">         11 :         scanf(&quot;%d,&quot;,&amp;n);</span>
+<span class="lineNum">      14 </span>                :<span class="lineCov">         11 :         scanf(&quot;%d,&quot;,&amp;m);</span>
+<span class="lineNum">      15 </span>                :<span class="lineCov">         48 :         for(i=0;i&lt;n;i++)</span>
+<span class="lineNum">      16 </span>                :<span class="lineCov">        319 :                 for(j=0;j&lt;m;j++)</span>
+<span class="lineNum">      17 </span>                :            :                         {
+<span class="lineNum">      18 </span>                :<span class="lineCov">        282 :                         scanf(&quot;%d&quot;,&amp;a[i][j]);</span>
+<span class="lineNum">      19 </span>                :<span class="lineCov">        282 :                         getchar();</span>
+<a name="20"><span class="lineNum">      20 </span>                :            :                         }</a>
+<span class="lineNum">      21 </span>                :<span class="lineCov">         11 : }</span>
+<span class="lineNum">      22 </span>                :<span class="lineCov">          6 : int donocir()</span>
+<span class="lineNum">      23 </span>                :            : {
+<span class="lineNum">      24 </span>                :            :         int i,j,k,sum,ans;
+<span class="lineNum">      25 </span>                :<span class="lineCov">          6 :         ans=MINV;</span>
+<span class="lineNum">      26 </span>                :            :         int p[MAXM+2];
+<span class="lineNum">      27 </span>                :<span class="lineCov">         25 :         for (i=0;i&lt;n;i++)</span>
+<span class="lineNum">      28 </span>                :            :                 {
+<span class="lineNum">      29 </span>                :<span class="lineCov">         19 :                 for(k=0;k&lt;m;k++) p[k]=0;</span>
+<span class="lineNum">      30 </span>                :<span class="lineCov">         75 :                 for (j=i;j&lt;n;j++)</span>
+<span class="lineNum">      31 </span>                :            :                         {
+<span class="lineNum">      32 </span>                :<span class="lineCov">         56 :                         sum=0;</span>
+<span class="lineNum">      33 </span>                :<span class="lineCov">        572 :                         for (k=0;k&lt;m;k++)</span>
+<span class="lineNum">      34 </span>                :            :                                 {
+<span class="lineNum">      35 </span>                :<span class="lineCov">        516 :                                 p[k]+=a[j][k];</span>
+<span class="lineNum">      36 </span>                :<span class="lineCov">        516 :                                 if (sum&lt;0)sum=0;</span>
+<span class="lineNum">      37 </span>                :<span class="lineCov">        516 :                                 sum+=p[k];</span>
+<span class="lineNum">      38 </span>                :<span class="lineCov">        516 :                                 if (sum&gt;ans)</span>
+<span class="lineNum">      39 </span>                :<span class="lineCov">         39 :                                         ans=sum;</span>
+<span class="lineNum">      40 </span>                :            :                                 }
+<span class="lineNum">      41 </span>                :            :                         }
+<span class="lineNum">      42 </span>                :            :                 }
+<a name="43"><span class="lineNum">      43 </span>                :<span class="lineCov">          6 :         return ans;</span></a>
+<span class="lineNum">      44 </span>                :            : }
+<span class="lineNum">      45 </span>                :<span class="lineCov">          5 : int docir(int ish,int isv)</span>
+<span class="lineNum">      46 </span>                :            : {
+<span class="lineNum">      47 </span>                :<span class="lineCov">          5 :         int i,k,j,l,p[2*MAXM+2],nn,mm,ans=MINV,sum,t,w,ai,aj,ak,at;</span>
+<span class="lineNum">      48 </span>                :<span class="lineCov">          5 :         nn=n; mm=m;</span>
+<span class="lineNum">      49 </span>                :<span class="lineCov">         23 :         for(i=0;i&lt;n;i++)</span>
+<span class="lineNum">      50 </span>                :<span class="lineCov">        156 :                 for(j=0;j&lt;m;j++)</span>
+<span class="lineNum">      51 </span>                :            :                         {
+<span class="lineNum">      52 </span>                :<span class="lineCov">        138 :                         if(ish)</span>
+<span class="lineNum">      53 </span>                :            :                         {
+<span class="lineNum">      54 </span>                :<span class="lineCov">        138 :                                 a[i][j+m]=a[i][j];</span>
+<span class="lineNum">      55 </span>                :            :                         }
+<span class="lineNum">      56 </span>                :<span class="lineCov">        138 :                         if(isv)</span>
+<span class="lineNum">      57 </span>                :            :                         {
+<span class="lineNum">      58 </span>                :<span class="lineCov">        138 :                                 a[i+n][j]=a[i][j];</span>
+<span class="lineNum">      59 </span>                :<span class="lineCov">        138 :                                 a[i+n][j+m]=a[i][j];</span>
+<span class="lineNum">      60 </span>                :            :                         }
+<span class="lineNum">      61 </span>                :            :                         }
+<span class="lineNum">      62 </span>                :<span class="lineCov">          5 :         if(isv)nn=2*n; else nn=n;</span>
+<span class="lineNum">      63 </span>                :<span class="lineCov">          5 :         if(ish)mm=2*m; else mm=m;</span>
+<span class="lineNum">      64 </span>                :<span class="lineCov">         23 :         for(i=0;i&lt;n;i++)</span>
+<span class="lineNum">      65 </span>                :            :                 {
+<span class="lineNum">      66 </span>                :<span class="lineCov">         18 :                 for(k=0;k&lt;mm;k++) p[k]=0;</span>
+<span class="lineNum">      67 </span>                :<span class="lineCov">        110 :                 for(j=i;j&lt;nn &amp;&amp; j&lt;i+n;j++)</span>
+<span class="lineNum">      68 </span>                :            :                         {
+<span class="lineNum">      69 </span>                :<span class="lineCov">         92 :                         t=0;</span>
+<span class="lineNum">      70 </span>                :<span class="lineCov">         92 :                         w=0;</span>
+<span class="lineNum">      71 </span>                :<span class="lineCov">         92 :                         dd[t]=0;</span>
+<span class="lineNum">      72 </span>                :<span class="lineCov">         92 :                         id[t]=-1;</span>
+<span class="lineNum">      73 </span>                :<span class="lineCov">         92 :                         sum=0;</span>
+<span class="lineNum">      74 </span>                :<span class="lineCov">       1856 :                         for(k=0;k&lt;mm;k++)</span>
+<span class="lineNum">      75 </span>                :            :                                 {
+<span class="lineNum">      76 </span>                :<span class="lineCov">       1764 :                                 p[k]+=a[j][k];</span>
+<span class="lineNum">      77 </span>                :<span class="lineCov">       1764 :                                 sum+=p[k];</span>
+<span class="lineNum">      78 </span>                :<span class="lineCov">       1764 :                                 while(k-id[t] &gt; m)t++;</span>
+<span class="lineNum">      79 </span>                :<span class="lineCov">       1764 :                                 if (sum-dd[t] &gt; ans)</span>
+<span class="lineNum">      80 </span>                :            :                                         {
+<span class="lineNum">      81 </span>                :<span class="lineCov">         46 :                                         ans=sum-dd[t];</span>
+<span class="lineNum">      82 </span>                :<span class="lineCov">         46 :                                         ai=i;</span>
+<span class="lineNum">      83 </span>                :<span class="lineCov">         46 :                                         aj=j;</span>
+<span class="lineNum">      84 </span>                :<span class="lineCov">         46 :                                         ak=k;</span>
+<span class="lineNum">      85 </span>                :<span class="lineCov">         46 :                                         at=id[t];</span>
+<span class="lineNum">      86 </span>                :            :                                         }
+<span class="lineNum">      87 </span>                :<span class="lineCov">       1764 :                                 while(sum&lt;dd[w] &amp;&amp; w&gt;=t) w=w-1;</span>
+<span class="lineNum">      88 </span>                :<span class="lineCov">       1764 :                                 w=w+1;</span>
+<span class="lineNum">      89 </span>                :<span class="lineCov">       1764 :                                 dd[w]=sum;</span>
+<span class="lineNum">      90 </span>                :<span class="lineCov">       1764 :                                 id[w]=k;</span>
+<span class="lineNum">      91 </span>                :            :                                 }
+<span class="lineNum">      92 </span>                :            :                         }
+<span class="lineNum">      93 </span>                :            :                 }
+<span class="lineNum">      94 </span>                :            :         //printf(&quot;%d\n%d\n%d\n%d\n&quot;,ai,aj,at,ak);
+<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">          5 :         return ans;</span></a>
+<span class="lineNum">      96 </span>                :            : }
+<span class="lineNum">      97 </span>                :<span class="lineCov">         11 : int main(int argc,char *argv[])</span>
+<span class="lineNum">      98 </span>                :            : {
+<span class="lineNum">      99 </span>                :<span class="lineCov">         11 :         int i,j,ish=0,isv=0;</span>
+<span class="lineNum">     100 </span>                :<span class="lineCov">         11 :         if (argc==1)</span>
+<span class="lineNum">     101 </span>                :            :                 {
+<span class="lineNum">     102 </span>                :<span class="lineNoCov">          0 :                         printf(&quot;no input file!\n&quot;);</span>
+<span class="lineNum">     103 </span>                :            :                 }
+<span class="lineNum">     104 </span>                :<span class="lineCov">         11 :         if (argc==2)</span>
+<span class="lineNum">     105 </span>                :            :                 {
+<span class="lineNum">     106 </span>                :<span class="lineCov">          6 :                         input(argv[1]);</span>
+<span class="lineNum">     107 </span>                :<span class="lineCov">          6 :                         printf(&quot;%d\n&quot;,donocir());</span>
+<span class="lineNum">     108 </span>                :            :                 }
+<span class="lineNum">     109 </span>                :            :         else
+<span class="lineNum">     110 </span>                :            :                 {
+<span class="lineNum">     111 </span>                :<span class="lineCov">          5 :                         input(argv[argc-1]);</span>
+<span class="lineNum">     112 </span>                :<span class="lineCov">         10 :                         for (i=1;i&lt;argc-1;i++)</span>
+<span class="lineNum">     113 </span>                :<span class="lineCov">         15 :                                 for(j=1;argv[i][j]!='\0';j++)</span>
+<span class="lineNum">     114 </span>                :            :                                 {
+<span class="lineNum">     115 </span>                :<span class="lineCov">         10 :                                 if (argv[i][j]=='h') ish=1;</span>
+<span class="lineNum">     116 </span>                :<span class="lineCov">         10 :                                 if (argv[i][j]=='v') isv=1;</span>
+<span class="lineNum">     117 </span>                :            :                                 }
+<span class="lineNum">     118 </span>                :<span class="lineCov">          5 :                         printf(&quot;%d\n&quot;,docir(ish,isv));</span>
+<span class="lineNum">     119 </span>                :            :                 }
+<span class="lineNum">     120 </span>                :<span class="lineCov">         11 :     return 0;</span>
+<span class="lineNum">     121 </span>                :            : }
+<span class="lineNum">     122 </span>                :            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
